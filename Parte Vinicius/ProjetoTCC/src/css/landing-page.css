@@ -1,0 +1,911 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Squada+One&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: monospace;
+    overflow-x: hidden;
+}
+
+/* Barra de navegação */
+#nav-header{
+    background: rgb(1,73,80);
+    background: linear-gradient(90deg, rgba(1,73,80,1) 0%, rgba(30,166,101,1) 46%);
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-style: normal; 
+}
+
+#nav-bar-search{
+    background-color: white;
+    border: 1px solid black;
+    display: flex;
+}
+
+#nav-bar-search input{
+    border: none;
+    width: 100%;
+    color: black;
+}
+
+.nav-bar-search img, svg{
+    width: 20px;
+    height: 20px;
+}
+
+#search-button-filter{
+    border: 1px solid grey;
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+#header-links a{
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    color: black;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    padding: 5px 10px;
+}
+
+#header-links a:hover{
+    background-color: #d2b202;
+}
+
+#hire-button{
+    background-color: #EAB112;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+#hire-button:hover{
+    background-color: #C78E0E;
+}
+
+
+/* Área de servições*/
+#better-services-title{
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    font-style: normal; 
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#services-box-1{
+    background: rgb(1,73,80);
+    background: linear-gradient(90deg, rgba(1,73,80,1) 0%, rgba(30,166,101,1) 46%);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 4px 4px 2px #cac6c6;
+}
+#services-box-2{
+    background: rgb(1,73,80);
+    background: linear-gradient(90deg, rgba(1,73,80,1) 0%, rgba(30,166,101,1) 46%);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 4px 4px 2px #cac6c6;
+}
+#services-box-3{
+    background: rgb(1,73,80);
+    background: linear-gradient(90deg, rgba(1,73,80,1) 0%, rgba(30,166,101,1) 46%);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 4px 4px 2px #cac6c6;
+}
+
+.image-service{
+    padding: 10px;
+}
+
+.service-title-white{
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+}
+.service-box-contents{
+    padding: 10px;
+}
+#button-service{
+    display: flex;
+    background-color: #EAB112;
+    border-radius: 7.5px;
+    border: none;
+    padding: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#button-service:hover{
+    background-color: #C78E0E;
+}
+
+
+/* Área de feedbacks*/
+#area-feedback{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#feedback-content-title{
+    font-family: "Inter", sans-serif;
+    text-align: center;
+}
+#feedback-content h1{
+    font-size: 64px;
+    font-weight: bold;
+    font-style: normal; 
+}
+
+.experience-box-individual{
+    margin: 24px 0px;
+}
+
+
+/* Área de custo*/
+#cost-content-pai {
+    position: relative;
+    margin: 20px 0px;
+}
+
+#image-cost {
+    width: 100vw;
+    z-index: 0;
+}
+
+#cost-content {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+    text-align: left; /* Certifica-se de que o texto está alinhado à esquerda */
+}
+
+#cost-service-contents-1 h1 {
+    width: calc(50%);
+    font-size: 100px;
+    font-family: "Squada One", sans-serif;
+    font-style: normal;
+    text-align: left; /* Mantém o texto do título alinhado à esquerda */
+}
+
+#cost-service-contents-2 {
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    text-align: left; /* Mantém o conteúdo de parágrafo alinhado à esquerda */
+}
+
+.button-service-cost{
+    background-color: #EAB112;
+    border: none;
+    width: 100%;
+    border-radius: 8px;
+    padding: 10px 0px;
+    font-family: "Inter", sans-serif;
+    font-style: normal; 
+    font-weight: 600;
+    font-size: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button-service-cost:hover{
+    background-color: #C78E0E;
+}
+
+/* Rodapé*/
+.footer-web{
+    background: rgb(1,73,80);
+    background: linear-gradient(90deg, rgba(1,73,80,1) 0%, rgba(30,166,101,1) 46%);
+}
+
+.imagens-logo-icons{
+    display: flex;
+    gap: 7px;
+    transition: all 0.4s;
+}
+
+.imagens-logo-icons a{
+    text-decoration: none;
+}   
+
+
+.footer-social-links{
+    border-radius: 50%;
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+}
+
+#facebook{
+    background-color: #3b5998;
+}
+#instagram{
+    background: linear-gradient(#7f37c9, #ff2992, #ff9807);
+}
+#linkedin{
+    background-color: #0e76a8;
+}
+#youtube{
+    background-color: #c4302b;
+}
+
+#facebook, #linkedin, #youtube, #instagram{
+    color: black;
+    transition: all 0.5s ease;
+}
+#facebook:hover, #instagram:hover, #linkedin:hover, #youtube:hover{
+    opacity: 0.7;
+}
+
+.footer-links{
+    font-family: 'Inter', sans-serif;
+}
+
+.footer-web{
+    height: auto;
+}
+
+.footer-links-contents a{ 
+    text-decoration: none;
+    color: black;
+    font-size: calc(8px + 0.5vw);
+    text-align: center;
+}
+
+.footer-final{
+    padding: 1.5rem;
+    color: white;
+    font-size: calc(10px + 0.4vw);
+    text-align: center;
+}
+
+
+/* Design Responsivo */
+
+@media screen and (max-width: 577.98px){
+    /* Header */
+    .logo-empresa-inicial{
+        width: 70%;
+    }
+    .logo-empresa{
+        width: 30%;
+    }
+    #header-links{
+        padding: 5px 10px;
+        justify-content: end;
+        gap: 7px;
+    }
+    #header-links a{
+        font-size: 8px;
+        border-radius: 1.5px;
+        padding: 1px;
+    }
+
+    /* Área de serviços - principal*/
+    #better-services-title{
+        font-size: 16px;
+    }
+    #services-box-1{
+        padding: 2px;
+        border-radius: 5px;
+        height: auto;
+    }
+    #services-box-2, #services-box-3{
+        display: none;
+    }
+    .image-service{
+        width: 4rem;
+    }
+    .service-title-white{
+        font-size: 12px;
+
+    }
+    #button-service{
+        margin: 0 auto;
+        margin-bottom: 20px;
+        font-size: 12px;
+    }
+
+    /* Área de feedback*/
+    #feedback-content-title h1{
+        font-size: 20px;
+        margin-top: 44px;
+    }
+    #feedback-content-title p{
+        font-size: calc(10px + 0.5vw);
+    }
+    .feedback-content-title{
+        font-size: calc(10px + 0.5vw);
+    }
+    .feedback-content1{
+        display: none;
+    }
+    .feedback-content2{
+        display: none;
+    }
+    .image-feedback{
+        width: calc(5%);
+    }
+    .experience-box-individual{
+        font-size: calc(10px + 0.5vw);
+        margin: 5px 0px 15px;
+    }
+
+    /* Área de custo*/
+    #cost-content {
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        text-align: left; /* Mantém o alinhamento à esquerda para telas pequenas também */
+    }
+    #cost-service-contents-1 h1 {
+        width: calc(50%);
+        font-size: 20px;
+        text-align: left;
+    }
+    #cost-service-contents-2 p {
+        width: calc(77%);
+        font-size: calc(12px - 0.5vw);
+        text-align: left;
+    }
+    #cost-service-contents-3 button {
+        width: calc(40%);
+        font-size: 10px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    /* Rodapé*/
+    .imagem-icons{
+        font-size: calc(10px - 0.5vw);
+    }
+    .footer-links-contents{
+        font-size: 10px;
+    }
+}
+
+@media screen and (min-width: 578px) and (max-width: 767.98px){
+    .logo-empresa-inicial{
+        width: 65%;
+    }
+    .logo-empresa{
+        width: 40%;
+    }
+    #header-links{
+        padding: 5px 10px;
+        justify-content: end;
+        gap: 10px;
+    }
+    #header-links a{
+        font-size: 10px;
+        border-radius: 1.5px;
+        padding: 1px;
+    }
+
+    /* Área de serviços - principal*/
+    #better-services-title{
+        font-size: 12px;
+    }
+    #services-box-1{
+        width: 40%;
+        padding: 2px;
+        border-radius: 5px;
+        height: auto;
+    }
+    #services-box-2{
+        width: 40%;
+        padding: 2px;
+        border-radius: 5px;
+        height: auto;
+    }
+    #services-box-3{
+        display: none;
+    }
+    .image-service{
+        width: 4rem;
+    }
+    .service-title-white{
+        font-size: 10px;
+
+    }
+    #button-service{
+        margin: 0 auto;
+        margin-bottom: 10px;
+        font-size: 10px;
+    }
+
+    /* Área de feedback*/
+    #feedback-content-title h1{
+        font-size: 20px;
+        margin-top: 66px;
+    }
+    #feedback-content-title p{
+        font-size: calc(14px - 0.5vw);
+    }
+    .feedback-content-title{
+        font-size: calc(8px + 0.5vw);
+    }
+    .feedback-content2{
+        display: none;
+    }
+    .image-feedback{
+        width: calc(10%);
+    }
+    .experience-box-individual{
+        font-size: calc(8px + 0.5vw);
+        margin: 5px 0px 15px;
+    }
+
+    /* Área de custo*/
+    #cost-content {
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        text-align: left; /* Mantém o alinhamento à esquerda para telas pequenas também */
+    }
+    #cost-service-contents-1 h1 {
+        width: calc(50%);
+        font-size: 30px;
+        text-align: left;
+    }
+    #cost-service-contents-2 p {
+        width: calc(77%);
+        font-size: calc(16px - 0.5vw);
+        text-align: left;
+    }
+    #cost-service-contents-3 button {
+        width: calc(35%);
+        font-size: 16px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    /* Rodapé*/
+    .imagem-icons{
+        font-size: calc(8px + 0.5vw);
+    }
+    .footer-links-contents{
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991.98px){
+    .logo-empresa-inicial{
+        width: 60%;
+    }
+    .logo-empresa{
+        width: 45%;
+    }
+    #header-links{
+        padding: 5px 10px;
+        justify-content: end;
+        gap: 16px;
+    }
+    #header-links a{
+        font-size: 10px;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    /* Área de serviços - principal*/
+    #better-services-title{
+        font-size: 16px;
+    }
+    #services-box-1{
+        width: 40%;
+        padding: 2px;
+        border-radius: 5px;
+        height: auto;
+    }
+    #services-box-2{
+        width: 40%;
+        padding: 2px;
+        border-radius: 5px;
+        height: auto;
+    }
+    #services-box-3{
+        display: none;
+    }
+    .image-service{
+        width: 5rem;
+    }
+    .service-title-white{
+        font-size: 14px;
+
+    }
+    #button-service{
+        margin: 0 auto;
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
+
+    /* Área de feedback*/
+    #feedback-content-title h1{
+        font-size: 30px;
+        margin-top: 66px;
+    }
+    #feedback-content-title p{
+        font-size: calc(16px - 0.5vw);
+    }
+    .feedback-content-title{
+        font-size: calc(10px + 0.5vw);
+    }
+    .feedback-content2{
+        display: none;
+    }
+    .image-feedback{
+        width: calc(10%);
+    }
+    .experience-box-individual{
+        font-size: calc(10px + 0.5vw);
+        margin: 5px 0px 20px;
+    }
+
+    /* Área de custo*/
+    #cost-content {
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        text-align: left; /* Mantém o alinhamento à esquerda para telas pequenas também */
+    }
+    #cost-service-contents-1 h1 {
+        width: calc(50%);
+        font-size: 40px;
+        text-align: left;
+    }
+    #cost-service-contents-2 p {
+        width: calc(77%);
+        font-size: calc(16px + 0.5vw);
+        text-align: left;
+    }
+    #cost-service-contents-3 button {
+        width: calc(35%);
+        font-size: 16px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    /* Rodapé*/
+    .imagem-icons{
+        font-size: calc(12px + 0.5vw);
+    }
+    .footer-links-contents{
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199.98px){
+    .logo-empresa-inicial{
+        width: 50%;
+    }
+    .logo-empresa{
+        width: 40%;
+    }
+    #header-links{
+        padding: 10px 15px;
+        justify-content: end;
+        gap: 20px;
+    }
+    #header-links a{
+        font-size: 12px;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    /* Área de serviços - principal*/
+    #better-services-title{
+        font-size: 20px;
+    }
+    #services-box-1{
+        width: 30%;
+        padding: 2px;
+        border-radius: 5px;
+        height: auto;
+    }
+    #services-box-2{
+        width: 30%;
+        padding: 2px;
+        border-radius: 5px;
+        height: auto;
+    }
+    #services-box-3{
+        width: 30%;
+        padding: 2px;
+        border-radius: 5px;
+        height: auto;
+    }
+    .image-service{
+        width: 5rem;
+    }
+    .service-title-white{
+        font-size: 14px;
+
+    }
+    #button-service{
+        margin: 0 auto;
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
+
+    /* Área de feedback*/
+    #feedback-content-title h1{
+        font-size: 40px;
+        margin-top: 76px;
+    }
+    #feedback-content-title p{
+        font-size: calc(16px + 0.5vw);
+    }
+    .feedback-content-title{
+        font-size: calc(12px + 0.5vw);
+    }
+    .image-feedback{
+        width: calc(15%);
+    }
+    .experience-box-individual{
+        font-size: calc(12px + 0.5vw);
+        margin: 5px 0px 20px;
+    }
+
+    /* Área de custo*/
+    #cost-content {
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        text-align: left; /* Mantém o alinhamento à esquerda para telas pequenas também */
+    }
+    #cost-service-contents-1 h1 {
+        width: calc(50%);
+        font-size: 50px;
+        text-align: left;
+    }
+    #cost-service-contents-2 p {
+        width: calc(77%);
+        font-size: calc(18px + 0.5vw);
+        text-align: left;
+    }
+    #cost-service-contents-3 button {
+        width: calc(35%);
+        font-size: 18px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    /* Rodapé*/
+    .imagem-icons{
+        font-size: calc(14px + 0.5vw);
+    }
+    .footer-links-contents{
+        font-size: 16px;
+    }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1399.98px){
+    .logo-empresa-inicial{
+        width: 40%;
+    }
+    .logo-empresa{
+        width: 35%;
+    }
+    #header-links{
+        padding: 5px 10px;
+        justify-content: end;
+        gap: 20px;
+    }
+    #header-links a{
+        font-size: 14px;
+        border-radius: 5px;
+        padding: 5px 10px;
+    }
+
+    /*Área de serviços principal */
+    #better-services-title{
+        font-size: 24px;
+    }
+    #services-box-1{
+        width: 30%;
+        padding: 4px;
+        border-radius: 5px;
+        height: auto;
+    }
+    #services-box-2{
+        width: 30%;
+        padding: 4px;
+        border-radius: 5px;
+        height: auto;
+    }
+    #services-box-3{
+        width: 30%;
+        padding: 4px;
+        border-radius: 5px;
+        height: auto;
+    }
+    .image-service{
+        width: 6rem;
+    }
+    .service-title-white{
+        font-size: 16px;
+
+    }
+    #button-service{
+        margin: 0 auto;
+        margin-bottom: 20px;
+        font-size: 16px;
+    }
+
+    /*Área de feedback*/
+    #feedback-content-title h1{
+        font-size: 50px;
+        margin-top: 86px;
+    }
+    #feedback-content-title p{
+        font-size: calc(18px + 0.5vw);
+    }
+    .feedback-content-title{
+        font-size: calc(14px + 0.5vw);
+    }
+    .image-feedback{
+        width: calc(10%);
+    }
+    .experience-box-individual{
+        font-size: calc(14px + 0.5vw);
+        margin: 5px 0px 20px;
+    }
+
+    /*Área de custo*/
+    #cost-content {
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        text-align: left; 
+    }
+    #cost-service-contents-1 h1 {
+        width: calc(50%);
+        font-size: 60px;
+        text-align: left;
+    }
+    #cost-service-contents-2 p {
+        width: calc(77%);
+        font-size: calc(20px + 0.5vw);
+        text-align: left;
+    }
+    #cost-service-contents-3 button {
+        width: calc(35%);
+        font-size: 20px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+     /*Rodapé*/
+    .imagem-icons{
+        font-size: calc(14px + 0.5vw);
+    }
+    .footer-links-contents{
+        font-size: 18px;
+    }
+}
+
+@media screen and (min-width: 1400px){
+    .logo-empresa-inicial{
+        width: 40%;
+    }
+    .logo-empresa{
+        width: 35%;
+    }
+    #header-links{
+        padding: 5px 10px;
+        justify-content: end;
+        gap: 25px;
+    }
+    #header-links a{
+        font-size: 16px;
+        border-radius: 5px;
+        padding: 7px 15px;
+    }
+
+    /*Área de serviços principal */
+    #better-services-title{
+        font-size: 28px;
+    }
+    #services-box-1{
+        width: 30%;
+        padding: 4px;
+        border-radius: 10px;
+        height: auto;
+    }
+    #services-box-2{
+        width: 30%;
+        padding: 4px;
+        border-radius: 10px;
+        height: auto;
+    }
+    #services-box-3{
+        width: 30%;
+        padding: 4px;
+        border-radius: 10px;
+        height: auto;
+    }
+    .image-service{
+        width: 7rem;
+    }
+    .service-title-white{
+        font-size: 18px;
+
+    }
+    #button-service{
+        margin: 0 auto;
+        margin-bottom: 20px;
+        font-size: 18px;
+    }
+
+    /*Área de feedback*/
+    #feedback-content-title h1{
+        font-size: 60px;
+        margin-top: 96px;
+    }
+    #feedback-content-title p{
+        font-size: calc(20px + 0.5vw);
+    }
+    .feedback-content-title{
+        font-size: calc(16px + 0.5vw);
+    }
+    .image-feedback{
+        width: calc(12%);
+    }
+    .experience-box-individual{
+        font-size: calc(16px + 0.5vw);
+        margin: 5px 0px 20px;
+    }
+
+    /*Área de custo*/
+    #cost-content {
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        text-align: left; 
+    }
+    #cost-service-contents-1 h1 {
+        width: calc(50%);
+        font-size: 70px;
+        text-align: left;
+    }
+    #cost-service-contents-2 p {
+        width: calc(77%);
+        font-size: calc(24px + 0.5vw);
+        text-align: left;
+    }
+    #cost-service-contents-3 button {
+        width: calc(35%);
+        font-size: 24px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+     /*Rodapé*/
+    .imagem-icons{
+        font-size: calc(14px + 0.5vw);
+    }
+    .footer-links-contents{
+        font-size: 26px;
+    }
+}
