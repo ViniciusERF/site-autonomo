@@ -33,7 +33,7 @@
                 <div class="d-flex col-10 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6" id="header-links">
                     <a href="#area-servico">Serviços</a>
                     <a href="#area-feedback">Avaliações</a>
-                    <a href="pagina-contrate.html" id="hire-button">Contrate</a>
+                    <a href="pagina-contrate.php" id="hire-button">Contrate</a>
                     <a href="#" id="hire-button">Entrar</a>
 
                 </div>

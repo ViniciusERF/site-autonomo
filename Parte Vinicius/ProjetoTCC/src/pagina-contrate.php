@@ -16,7 +16,7 @@
         <nav class="row">
             <div class="d-flex justify-content-between">
                 <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
-                    <a href="landing-page.html"><img src="./css/img/pagina-contratante/ENCONTRE-tentativa-removebg.png" class="logo-empresa" alt=""></a>
+                    <a href="landing-page.php"><img src="./css/img/pagina-contratante/ENCONTRE-tentativa-removebg.png" class="logo-empresa" alt=""></a>
                 </div>
     
                 <div class="d-flex gap-4 justify-content-end nav-bar-links col-8 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6" id="header-links">
