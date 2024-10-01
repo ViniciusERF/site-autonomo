@@ -14,8 +14,7 @@
 <body>
 
     <header>
-        <h1>Nome do site/logo</h1>
-       
+        <a href="../../../Parte Vinicius\\ProjetoTCC/src/landing-page.php"><img src="../../../Parte Vinicius\\ProjetoTCC/src/css/img/landing-page/ENCONTRE-tentativa-removebg.png" alt="" id="logo-empresa-inicial"></a>
     </header>
 
     <main>

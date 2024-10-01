@@ -19,6 +19,10 @@ header h1 {
     font-size: 20px;
 }
 
+#logo-empresa-inicial{
+    width: 30%;
+}
+
 .search-box input {
     width: 300px;
     padding: 10px;

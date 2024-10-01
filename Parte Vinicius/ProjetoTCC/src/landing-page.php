@@ -34,7 +34,7 @@
                     <a href="#area-servico">Serviços</a>
                     <a href="#area-feedback">Avaliações</a>
                     <a href="pagina-contrate.php" id="hire-button">Contrate</a>
-                    <a href="#" id="hire-button">Entrar</a>
+                    <a href="../../../../Roberval\\Projeto/login.php" id="hire-button">Entrar</a>
 
                 </div>
             </div>
