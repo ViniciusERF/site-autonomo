@@ -45,7 +45,7 @@ if (!isset($_SESSION['user_id'])) {
                     <a href="#area-servico">Serviços</a>
                     <a href="#area-feedback">Avaliações</a>
                     <a href="pagina-contrate.php" id="hire-button">Contrate</a>
-                    <a href="../../../../Roberval\\Projeto/login.php" id="hire-button">Entrar</a>
+                    <a href="../../../../site-autonomo/Roberval\\Projeto/login.php" id="hire-button">Entrar</a>
 
                 </div>
             </div>
@@ -100,7 +100,7 @@ if (!isset($_SESSION['user_id'])) {
                         </p>
                     </div>
                         
-                    <button id="button-service" class="mt-3">Solicitar orçamento</button>
+                    <a href="../../../Roberval/Projeto/perfil_autonomo.php" style="text-decoration:none;"><button id="button-service" class="mt-3">Solicitar orçamento</button></a>
                 </div>
                 
 

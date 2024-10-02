@@ -17,8 +17,7 @@
 
 <header>
         <div class="header-content">
-            <h1>&lt;nome do site/logo&gt;</h1>
-            
+            <a href="../../../Parte Vinicius/ProjetoTCC/src/landing-page.php"><img src="../../../Parte Vinicius/ProjetoTCC/src/css/img/landing-page/ENCONTRE-tentativa-removebg.png" alt="" class="logo-empresa-inicial"></a>
         </div>
     </header>
 
@@ -76,7 +75,7 @@
                 <div class="form-section">
                     <img src="./image/maos.png" alt="Imagem Trato Feito">
                 
-                    <h1 class="form-group">Atraves desde cadastro o Contratante terá sua conta para ser acessada, sendo assim poderá ver 
+                    <h1 class="form-group">Através desse cadastro o Contratante terá sua conta para ser acessada, sendo assim poderá ver 
                         o perfil de vários Freelancers para sua contratação especifica. 
                     </h1>
                 </div>
@@ -129,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <div class="footer-header">
 
-    <h2>nome do site\ logo</h2>
+    <img src="../../../Parte Vinicius/ProjetoTCC/src/css/img/landing-page/ENCONTRE-tentativa-removebg.png" alt="" class="logo-empresa-final">
 
     <div class="social-media-footer">
         <a href="" class="social-media-itens-1"><img src="./icon/Icon.svg" alt="facebook"></a>
@@ -140,6 +139,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </div>
 
 <div class="footer-links">
+
 
         <article class="footer-links-box">
             <strong class="footer-links-title">Serviços</strong><br><br>
