@@ -1,4 +1,4 @@
-<?php include 'verificacao_sessao'; ?>
+<!--<?php include 'verificacao_sessao'; ?>-->
 
 <!DOCTYPE html>
 <html lang="pt-BR">
