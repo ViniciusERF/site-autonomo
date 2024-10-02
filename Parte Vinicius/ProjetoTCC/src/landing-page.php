@@ -187,7 +187,7 @@ if (!isset($_SESSION['user_id'])) {
                             </div>
                                     
                             <div id="cost-service-contents-3">
-                                <a href="pagina-contrate.html"><button class="button-service-cost">Contratar serviços</button></a>
+                                <a href="pagina-contrate.php"><button class="button-service-cost">Contratar serviços</button></a>
                             </div>
                         </div>
                     </section>

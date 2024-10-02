@@ -65,7 +65,7 @@ if (isset($_POST["email"]) && isset($_POST["senha"])) {
             if (password_verify($senha, $row['senha'])) {
                 $_SESSION['user_id'] = $row['id_contratante']; // Armazena o ID do contratante
                 $_SESSION['user_type'] = 'contratante'; // Armazena o tipo de usuário
-                header("Location: ../../ProjetoTCC/Parte Vinicius/ProjetoTCC/src/landing-page.php");
+                header("Location: ../../Parte Vinicius/ProjetoTCC/src/landing-page.php");
                 exit();
             } else {
                 echo "Senha incorreta para contratante.";
