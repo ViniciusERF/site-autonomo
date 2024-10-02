@@ -108,7 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Executa a consulta
         if ($conn->query($sql) === TRUE) {
             // Redireciona para a página home após o cadastro bem-sucedido
-            header("Location: .home.php");
+            header("Location:  ../../ProjetoTCC/Parte Vinicius/ProjetoTCC/src/landing-page.php");
             exit();
         } else {
             // Exibe um alerta de erro
