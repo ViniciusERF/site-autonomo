@@ -6,18 +6,28 @@ body {
     color: #fff;
 
 }
+header .logo {
+    height: 100px; /* Aumente a altura conforme desejado */
+    width: auto; /* Mantém a proporção da imagem */
+    margin-right: 15px; /* Espaço entre a logo e o título */
+}
 
 header {
+    background: linear-gradient(150deg, #1EA665, #014950);
+    color: white;
+    padding: 8px;
+    margin-bottom: 10%;
+    
+}
+
+.header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 50px;
-    background-color: #1b7340;
 }
 
-header h1 {
-    font-size: 20px;
-}
+
+
 
 #logo-empresa-inicial{
     width: 30%;
@@ -41,7 +51,7 @@ header h1 {
 
 .form-container {
     max-width: 1200px;
-    background-color: #289c58;
+    background: linear-gradient(150deg, #1EA665, #014950);
     padding: 30px;
     margin: 50px auto;
     border-radius: 10px;
@@ -84,7 +94,7 @@ header h1 {
 
 .input-secundy {
     background-color: #ffb800;
-    color: #fff;
+    color: black;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -104,17 +114,85 @@ header h1 {
     
 }
 
-footer {
-    background-color: #166d38;
+.footer-web {
+    background: rgb(1, 73, 80);
+    background: linear-gradient(90deg, rgba(1, 73, 80, 1) 0%, rgba(30, 166, 101, 1) 46%);
+    width: 100%;
+    height: 130px;
     padding: 20px;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15%;
 }
 
-footer p {
-    margin: 5px 0;
+.social-media-footer {
+    height: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
 }
 
-footer a {
-    color: #fff;
+.footer-links {
+    width: calc(100vw - 40%);
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-links-box {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.footer-links-contents { 
     text-decoration: none;
+    color: black;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header nav {
+        flex-direction: column;
+        margin: 0;
+    }
+
+    header nav a {
+        margin: 10px 0;
+    }
+
+    header input {
+        max-width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .editar-perfil {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .footer-web {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-links-box {
+        text-align: center;
+    }
 }

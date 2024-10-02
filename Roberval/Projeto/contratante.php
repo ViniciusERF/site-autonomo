@@ -13,9 +13,11 @@
 
 <body>
 
-    <header>
-        <h1>Nome do site/logo</h1>
-        
+<header>
+        <div class="header-content">
+            <h1>&lt;nome do site/logo&gt;</h1>
+            
+        </div>
     </header>
 
     <main>
@@ -121,12 +123,51 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     </main>
 
-    <footer>
-       
-        <p>Serviços | Assistência Técnica | Design Tecnologia | Consultoria</p>
-        <p>Institucional | Quem Somos | Trabalhe Conosco | Profissionais Verificados | Contato</p>
-        <p>Sobre | Termos e Condições | Política de Privacidade</p>
-    </footer>
+    <footer class="footer-web">
+
+<div class="footer-header">
+
+    <h2>nome do site\ logo</h2>
+
+    <div class="social-media-footer">
+        <a href="" class="social-media-itens-1"><img src="./icon/Icon.svg" alt="facebook"></a>
+        <a href="" class="social-media-itens-2"><img src="./icon/Icon-1.svg" alt="linkedin"></a>
+        <a href="" class="social-media-itens-3"><img src="./icon/Icon-2.svg" alt="youtube"></a>
+        <a href="" class="social-media-itens-4"><img src="./icon/Icon-3.svg" alt="instagram"></a>
+    </div>
+</div>
+
+<div class="footer-links">
+
+        <article class="footer-links-box">
+            <strong class="footer-links-title">Serviços</strong><br><br>
+
+            <span><a href="" class="footer-links-contents">Assitência técnica</a></span>
+            <span><a href="" class="footer-links-contents">Design tecnológica</a></span>
+            <span><a href="" class="footer-links-contents">Consultoria</a></span>
+                
+        </article>
+
+        <article class="footer-links-box">
+            <strong class="footer-links-title">Institucional</strong><br><br>
+
+                <span><a href="" class="footer-links-contents">Quem somos</a></span>
+                <span><a href="" class="footer-links-contents">Trabalhe conosco</a></span>
+                <span><a href="" class="footer-links-contents">Profissionais</a> </span>               
+
+        </article>
+
+        <article class="footer-links-box">
+            <strong class="footer-links-title">Sobre</strong><br><br>
+
+            <span><a href="" class="footer-links-contents">Termos e condições</a></span>
+            <span><a href="" class="footer-links-contents">Políticas de privacidade</a></span>
+            <span><a href="" class="footer-links-contents">Contato</a> </span>               
+
+        </article>
+</div>
+
+</footer>
 
 </body>
 

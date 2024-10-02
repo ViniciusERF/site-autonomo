@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro Freelancer</title>
+    <title>Cadastro autonomo</title>
     <link rel="stylesheet" href="./css/autonomo.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,9 +13,13 @@
 
 <body>
 
-    <header>
-        <a href="../../../Parte Vinicius\\ProjetoTCC/src/landing-page.php"><img src="../../../Parte Vinicius\\ProjetoTCC/src/css/img/landing-page/ENCONTRE-tentativa-removebg.png" alt="" id="logo-empresa-inicial"></a>
-    </header>
+<header>
+    <div class="header-content">
+        <img src="./image/logo.png" alt="Logo do Site" class="logo"></h1>
+        
+    </div>
+</header>
+
 
     <main>
         <form action="autonomo.php" method="POST">
@@ -198,12 +202,52 @@
         ?>
     </main>
 
-    <footer>
-       
-        <p>Serviços | Assistência Técnica | Design Tecnologia | Consultoria</p>
-        <p>Institucional | Quem Somos | Trabalhe Conosco | Profissionais Verificados | Contato</p>
-        <p>Sobre | Termos e Condições | Política de Privacidade</p>
-    </footer>
+    <footer class="footer-web">
+
+<div class="footer-header">
+
+    <h2>nome do site\ logo</h2>
+
+    <div class="social-media-footer">
+        <a href="" class="social-media-itens-1"><img src="./icon/Icon.svg" alt="facebook"></a>
+        <a href="" class="social-media-itens-2"><img src="./icon/Icon-1.svg" alt="linkedin"></a>
+        <a href="" class="social-media-itens-3"><img src="./icon/Icon-2.svg" alt="youtube"></a>
+        <a href="" class="social-media-itens-4"><img src="./icon/Icon-3.svg" alt="instagram"></a>
+    </div>
+</div>
+
+<div class="footer-links">
+
+        <article class="footer-links-box">
+            <strong class="footer-links-title">Serviços</strong><br><br>
+
+            <span><a href="" class="footer-links-contents">Assitência técnica</a></span>
+            <span><a href="" class="footer-links-contents">Design tecnológica</a></span>
+            <span><a href="" class="footer-links-contents">Consultoria</a></span>
+                
+        </article>
+
+        <article class="footer-links-box">
+            <strong class="footer-links-title">Institucional</strong><br><br>
+
+                <span><a href="" class="footer-links-contents">Quem somos</a></span>
+                <span><a href="" class="footer-links-contents">Trabalhe conosco</a></span>
+                <span><a href="" class="footer-links-contents">Profissionais</a> </span>               
+
+        </article>
+
+        <article class="footer-links-box">
+            <strong class="footer-links-title">Sobre</strong><br><br>
+
+            <span><a href="" class="footer-links-contents">Termos e condições</a></span>
+            <span><a href="" class="footer-links-contents">Políticas de privacidade</a></span>
+            <span><a href="" class="footer-links-contents">Contato</a> </span>               
+
+        </article>
+</div>
+
+</footer>
+
     
 </body>
 
