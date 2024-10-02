@@ -12,6 +12,10 @@ header {
     margin-bottom: 10%;
 }
 
+.logo-empresa-inicial{
+    width: 30%;
+}
+
 .header-content {
     display: flex;
     justify-content: space-between;
@@ -125,40 +129,44 @@ margin-right: 600px;
 
 }
 
+.logo-empresa-final{
+    width: 20%;
+}
+
 .footer-web {
-background: linear-gradient(150deg, #1EA665, #014950);
-width: 100%;
-height: 130px;
-padding: 20px;
-display: flex;
-justify-content: space-between;
-margin-top: 15%;
+    background: linear-gradient(150deg, #1EA665, #014950);
+    width: 100%;
+    height: 130px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15%;
 }
 
 .social-media-footer {
-height: 40%;
-display: flex;
-justify-content: space-between;
-align-items: end;
+    display: flex;
+    justify-content: start;
+    align-items: end;
+    gap: 20px;
 }
 
 .footer-links {
-width: calc(100vw - 40%);
-display: flex;
-justify-content: space-between;
+    width: calc(100vw - 40%);
+    display: flex;
+    justify-content: space-between;
 }
 
 .footer-links-box {
-height: 100px;
-width: 100%;
-display: flex;
-justify-content: space-between;
-flex-direction: column;
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
 .footer-links-contents { 
-text-decoration: none;
-color: black;
+    text-decoration: none;
+    color: black;
 }
 
 /* Responsividade */

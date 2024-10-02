@@ -15,7 +15,7 @@
 
 <header>
     <div class="header-content">
-        <img src="./image/logo.png" alt="Logo do Site" class="logo"></h1>
+        <a href="../../../Parte Vinicius/ProjetoTCC/src/landing-page.php"><img src="./image/logo.png" alt="Logo do Site" class="logo"></a>
         
     </div>
 </header>
@@ -206,7 +206,7 @@
 
 <div class="footer-header">
 
-    <h2>nome do site\ logo</h2>
+    <img src="../../../Parte Vinicius/ProjetoTCC/src/css/img/landing-page/ENCONTRE-tentativa-removebg.png" alt="" class="logo-empresa-final">
 
     <div class="social-media-footer">
         <a href="" class="social-media-itens-1"><img src="./icon/Icon.svg" alt="facebook"></a>

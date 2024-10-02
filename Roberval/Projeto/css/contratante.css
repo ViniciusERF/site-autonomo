@@ -14,6 +14,10 @@ header {
     margin-bottom: 10%;
 }
 
+.logo-empresa-inicial{
+    width: 30%;
+}
+
 .header-content {
     display: flex;
     justify-content: space-between;
@@ -118,9 +122,12 @@ header nav a {
     
 }
 
+.logo-empresa-final{
+    width: 20%;
+}
+
 .footer-web {
-    background: rgb(1, 73, 80);
-    background: linear-gradient(90deg, rgba(1, 73, 80, 1) 0%, rgba(30, 166, 101, 1) 46%);
+    background: linear-gradient(150deg, #1EA665, #014950);
     width: 100%;
     height: 130px;
     padding: 20px;
@@ -130,10 +137,10 @@ header nav a {
 }
 
 .social-media-footer {
-    height: 40%;
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: end;
+    gap: 20px;
 }
 
 .footer-links {
@@ -148,6 +155,10 @@ header nav a {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+}
+
+.footer-links-title{
+    color: black;
 }
 
 .footer-links-contents { 

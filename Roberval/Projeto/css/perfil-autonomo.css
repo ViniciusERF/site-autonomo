@@ -12,7 +12,9 @@ header {
     padding: 8px;
     margin-bottom: 10%;
 }
-
+.logo-empresa-inicial{
+    width: 30%;
+}
 .header-content {
     display: flex;
     justify-content: space-between;
@@ -155,6 +157,9 @@ p {
 .rodape-post span:hover {
     color: #000;
 }
+.logo-empresa-final{
+    width: 20%;
+}
 
 .footer-web {
     background: linear-gradient(150deg, #1EA665, #014950);
@@ -167,10 +172,10 @@ p {
 }
 
 .social-media-footer {
-    height: 40%;
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: end;
+    gap: 20px;
 }
 
 .footer-links {
