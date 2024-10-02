@@ -41,7 +41,7 @@
     <?php
 session_start(); // Inicie a sessão
 
-if(isset($_POST["email"]) && isset($_POST["senha"])){
+if (isset($_POST["email"]) && isset($_POST["senha"])) {
     $email = $_POST["email"];
     $senha = $_POST["senha"];
 
@@ -49,47 +49,55 @@ if(isset($_POST["email"]) && isset($_POST["senha"])){
     include_once("../Projeto/conecta.php");
 
     // Prepare as consultas SQL para verificar o contratante ou autônomo
-    $sql_contratante = "SELECT * FROM contratante WHERE email='$email'";
-    $sql_autonomo = "SELECT * FROM autonomo WHERE email='$email'";
+    $sql_contratante = "SELECT * FROM contratante WHERE email=?";
+    $sql_autonomo = "SELECT * FROM autonomo WHERE email=?";
 
-    // Executa as consultas para contratante e autônomo
-    $result_contratante = $conn->query($sql_contratante);
-    $result_autonomo = $conn->query($sql_autonomo);
+    // Usa prepared statements para maior segurança contra SQL injection
+    if ($stmt = $conn->prepare($sql_contratante)) {
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result_contratante = $stmt->get_result();
 
-    // Verifica se o email existe na tabela contratante
-    if($result_contratante->num_rows > 0) {
-        $row = $result_contratante->fetch_assoc();
-        
-        // Verifique a senha (assumindo que a senha foi criptografada)
-        if(password_verify($senha, $row['senha'])) {
-            $_SESSION['user_id'] = $row['id_contratante']; // Armazena o ID do contratante
-            $_SESSION['user_type'] = 'contratante'; // Armazena o tipo de usuário
-            header("Location: ../Projeto/home.php"); // Redireciona para a página home do contratante
-            exit();
+        if ($result_contratante->num_rows > 0) {
+            $row = $result_contratante->fetch_assoc();
+
+            // Verifique a senha
+            if (password_verify($senha, $row['senha'])) {
+                $_SESSION['user_id'] = $row['id_contratante']; // Armazena o ID do contratante
+                $_SESSION['user_type'] = 'contratante'; // Armazena o tipo de usuário
+                header("Location: ../../../Parte Vinicius/ProjetoTCC/src/pagina-contratate.php");
+                exit();
+            } else {
+                echo "Senha incorreta para contratante.";
+            }
         } else {
-            echo "Senha incorreta para contratante.";
+            // Verifica na tabela de autônomo
+            if ($stmt = $conn->prepare($sql_autonomo)) {
+                $stmt->bind_param("s", $email);
+                $stmt->execute();
+                $result_autonomo = $stmt->get_result();
+
+                if ($result_autonomo->num_rows > 0) {
+                    $row = $result_autonomo->fetch_assoc();
+
+                    // Verifique a senha
+                    if (password_verify($senha, $row['senha'])) {
+                        $_SESSION['user_id'] = $row['id_autonomo']; // Armazena o ID do autônomo
+                        $_SESSION['user_type'] = 'autonomo'; // Armazena o tipo de usuário
+                        header("Location: perfil_autonomo.php"); // Altere para a página correta do autônomo
+                        exit();
+                    } else {
+                        echo "Senha incorreta para autônomo.";
+                    }
+                } else {
+                    echo "Email não encontrado.";
+                }
+            }
         }
-    } 
-    // Verifica se o email existe na tabela autônomo
-    elseif($result_autonomo->num_rows > 0) {
-        $row = $result_autonomo->fetch_assoc();
-        
-        // Verifique a senha
-        if(password_verify($senha, $row['senha'])) {
-            $_SESSION['user_id'] = $row['id_autonomo']; // Armazena o ID do autônomo
-            $_SESSION['user_type'] = 'autonomo'; // Armazena o tipo de usuário
-            header("Location: ../Projeto/home.php"); // Redireciona para a página home do autônomo
-            exit();
-        } else {
-            echo "Senha incorreta para autônomo.";
-        }
-    } 
-    // Caso o email não seja encontrado em nenhuma das tabelas
-    else {
-        echo "Email não encontrado.";
     }
 }
 ?>
+
 
 </body>
 </html>

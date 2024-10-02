@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+// Verifica se o usuário está logado
+if (!isset($_SESSION['user_id'])) {
+    // Se não estiver logado, redireciona para a página de login
+    header("Location: ../../../Roberval/Projeto/login.php");
+    exit();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -11,6 +23,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body>
+
+    <div class="Welcome"> Bem-vindo ao Encontre <?php echo $_SESSION['nome'] ?></div>
     <!-- Barra de navegação -->
     <header class="header container-fluid">
         <nav class="row">
