@@ -1,4 +1,5 @@
-<!--<?php include 'verificacao_sessao'; ?>-->
+<?php include 'auth/verifica_login.php';
+?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -7,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro Contratantes</title>
-    <link rel="stylesheet" href="./css/contratante.css">
+    <link rel="stylesheet" href="css/contratante.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Squada+One&display=swap" rel="stylesheet">
@@ -73,7 +74,7 @@
                 </div>
 
                 <div class="form-section">
-                    <img src="./image/maos.png" alt="Imagem Trato Feito">
+                    <img src="image/maos.png" alt="Imagem Trato Feito">
                 
                     <h1 class="form-group">Através desse cadastro o Contratante terá sua conta para ser acessada, sendo assim poderá ver 
                         o perfil de vários Freelancers para sua contratação especifica. 
@@ -108,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Executa a consulta
         if ($conn->query($sql) === TRUE) {
             // Redireciona para a página home após o cadastro bem-sucedido
-            header("Location:  ../../ProjetoTCC/Parte Vinicius/ProjetoTCC/src/landing-page.php");
+            header("Location:  ../ProjetoTCC/Parte Vinicius/ProjetoTCC/src/landing-page.php");
             exit();
         } else {
             // Exibe um alerta de erro
@@ -128,13 +129,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <div class="footer-header">
 
-    <img src="../../../Parte Vinicius/ProjetoTCC/src/css/img/landing-page/ENCONTRE-tentativa-removebg.png" alt="" class="logo-empresa-final">
+    <img src="../../Parte Vinicius/ProjetoTCC/src/css/img/landing-page/ENCONTRE-tentativa-removebg.png" alt="" class="logo-empresa-final">
 
     <div class="social-media-footer">
-        <a href="" class="social-media-itens-1"><img src="./icon/Icon.svg" alt="facebook"></a>
-        <a href="" class="social-media-itens-2"><img src="./icon/Icon-1.svg" alt="linkedin"></a>
-        <a href="" class="social-media-itens-3"><img src="./icon/Icon-2.svg" alt="youtube"></a>
-        <a href="" class="social-media-itens-4"><img src="./icon/Icon-3.svg" alt="instagram"></a>
+        <a href="" class="social-media-itens-1"><img src="icon/Icon.svg" alt="facebook"></a>
+        <a href="" class="social-media-itens-2"><img src="icon/Icon-1.svg" alt="linkedin"></a>
+        <a href="" class="social-media-itens-3"><img src="icon/Icon-2.svg" alt="youtube"></a>
+        <a href="" class="social-media-itens-4"><img src="icon/Icon-3.svg" alt="instagram"></a>
     </div>
 </div>
 

@@ -1,14 +1,3 @@
-<?php
-session_start();
-
-// Verifica se o usuário está logado
-if (!isset($_SESSION['user_id'])) {
-    // Se não estiver logado, redireciona para a página de login
-    header("Location: ../../Roberval/Projeto/login.php");
-    exit();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -45,7 +34,8 @@ if (!isset($_SESSION['user_id'])) {
                     <a href="#area-servico">Serviços</a>
                     <a href="#area-feedback">Avaliações</a>
                     <a href="pagina-contrate.php" id="hire-button">Contrate</a>
-                    <a href="../../../../site-autonomo/Roberval\\Projeto/login.php" id="hire-button">Entrar</a>
+                    <a href="../../../../site-autonomo/Roberval\\Projeto/auth/login.php" id="hire-button" class="botaoLogin">Entrar</a>
+                    <a href="../../../../site-autonomo/Roberval\\Projeto/protected/suporte.php" id="hire-button" class="botaoLogin">Suporte</a>
 
                 </div>
             </div>
@@ -83,7 +73,7 @@ if (!isset($_SESSION['user_id'])) {
                         </p>
                     </div>
     
-                    <button id="button-service" class="mt-3">Solicitar orçamento</button>
+                    <button id="button-service" class="mt-3 botaoLogin">Solicitar orçamento</button>
                 </div>
                 
                 <div class="col-sm-6 col-lg-3 col-xl-3" id="services-box-2">
@@ -100,7 +90,7 @@ if (!isset($_SESSION['user_id'])) {
                         </p>
                     </div>
                         
-                    <a href="../../../Roberval/Projeto/perfil_autonomo.php" style="text-decoration:none;"><button id="button-service" class="mt-3">Solicitar orçamento</button></a>
+                    <a href="" style="text-decoration:none;"><button id="button-service" class="mt-3 botaoLogin">Solicitar orçamento</button></a>
                 </div>
                 
 
@@ -118,7 +108,7 @@ if (!isset($_SESSION['user_id'])) {
                         </p>
                     </div>
 
-                    <button id="button-service" class="mt-3">Solicitar orçamento</button>
+                    <button id="button-service" class="mt-3 botaoLogin">Solicitar orçamento</button>
                 </div>
             </div>
         </section>
@@ -256,6 +246,6 @@ if (!isset($_SESSION['user_id'])) {
 
 
 
-    <script src="index.js"></script>
+    <script src="landing-page.js"></script>
 </body>
 </html> 

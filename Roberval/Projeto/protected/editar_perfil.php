@@ -1,4 +1,6 @@
-<!--<?php include 'verificacao_sessao'; ?>-->
+<?php include '../auth/verifica_login.php'; 
+protect();
+?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -6,12 +8,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Perfil</title>
-    <link rel="stylesheet" href="css/editar-perfil.css">
+    <link rel="stylesheet" href="../css/editar-perfil.css">
 </head>
 <body>
     <header>
         <div class="header-content">
-            <a href="../../Parte Vinicius/ProjetoTCC/src/landing-page.php"><img src="../../Parte Vinicius/ProjetoTCC/src/css/img/landing-page/ENCONTRE-tentativa-removebg.png" alt="" class="logo-empresa-inicial"></a>     
+            <a href="../../../../Parte Vinicius/ProjetoTCC/src/landing-page.php"><img src="../../../../Parte Vinicius/ProjetoTCC/src/css/img/landing-page/ENCONTRE-tentativa-removebg.png" alt="" class="logo-empresa-inicial"></a>     
         </div>
     </header>
     <main>
@@ -19,7 +21,7 @@
             <h2>Editar perfil</h2>
             <div class="perfil-container">
                 <div class="perfil-header">
-                    <img src="./image/perfil.jpg" alt="Foto de perfil">
+                    <img src="../image/perfil.jpg" alt="Foto de perfil">
                     <div>
                         <h3>Vinicius</h3>
                         <a href="#">alterar foto de perfil</a>
@@ -83,13 +85,13 @@
 
 <div class="footer-header">
 
-    <img src="../../Parte Vinicius/ProjetoTCC/src/css/img/landing-page/ENCONTRE-tentativa-removebg.png" alt="" class="logo-empresa-final">
+    <img src="../../../../Parte Vinicius/ProjetoTCC/src/css/img/landing-page/ENCONTRE-tentativa-removebg.png" alt="" class="logo-empresa-final">
 
     <div class="social-media-footer">
-        <a href="" class="social-media-itens-1"><img src="./icon/Icon.svg" alt="facebook"></a>
-        <a href="" class="social-media-itens-2"><img src="./icon/Icon-1.svg" alt="linkedin"></a>
-        <a href="" class="social-media-itens-3"><img src="./icon/Icon-2.svg" alt="youtube"></a>
-        <a href="" class="social-media-itens-4"><img src="./icon/Icon-3.svg" alt="instagram"></a>
+        <a href="" class="social-media-itens-1"><img src="../icon/Icon.svg" alt="facebook"></a>
+        <a href="" class="social-media-itens-2"><img src="../icon/Icon-1.svg" alt="linkedin"></a>
+        <a href="" class="social-media-itens-3"><img src="../icon/Icon-2.svg" alt="youtube"></a>
+        <a href="" class="social-media-itens-4"><img src="../icon/Icon-3.svg" alt="instagram"></a>
     </div>
 </div>
 

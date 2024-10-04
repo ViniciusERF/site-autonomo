@@ -1,4 +1,6 @@
-<!--<?php include 'verificacao_sessao'; ?>-->
+<?php include '../auth/verifica_login.php'; 
+protect();
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -6,19 +8,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Usuário</title>
-    <link rel="stylesheet" href="./css/perfil-autonomo.css">
+    <link rel="stylesheet" href="../css/perfil-autonomo.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <header>
         <div class="header-content">
-            <a href="../../Parte Vinicius/ProjetoTCC/src/landing-page.php"><img src="../../Parte Vinicius/ProjetoTCC/src/css/img/landing-page/ENCONTRE-tentativa-removebg.png" alt="" class="logo-empresa-inicial"></a>
+            <a href="../../../../Parte Vinicius/ProjetoTCC/src/landing-page.php"><img src="../../../../Parte Vinicius/ProjetoTCC/src/css/img/landing-page/ENCONTRE-tentativa-removebg.png" alt="" class="logo-empresa-inicial"></a>
         </div>
     </header>
 
     <section class="perfil-secao">
         <div class="cartao-perfil">
-            <img src="./image/perfil.jpg" alt="Perfil do Usuário" class="foto-perfil">
+            <img src="../image/perfil.jpg" alt="Perfil do Usuário" class="foto-perfil">
             <h2>Vinicius</h2>
             <p>Desenvolvedor - Júnior</p>
             <div class="icone-configuracoes"><a href="https://w.app/Xl7HAD" target="about_blank"><i class="fa-brands fa-whatsapp"></i></a></div>
@@ -37,17 +39,17 @@
         <div class="secao-posts">
             <div class="post">
                 <div class="cabecalho-post">
-                    <img src="./image/perfil.jpg" alt="Vinicius" class="foto-post">
+                    <img src="../image/perfil.jpg" alt="Vinicius" class="foto-post">
                     <span>Vinicius - 3 min atrás</span>
                 </div>
-                <img src="./image/foto-postagem.jpg" alt="Imagem de código" class="imagem-post">
+                <img src="../image/foto-postagem.jpg" alt="Imagem de código" class="imagem-post">
                 <p>Descrição do post</p>
                 
             </div>
 
             <div class="post">
                 <div class="cabecalho-post">
-                    <img src="./image/perfil.jpg" alt="Vinicius" class="foto-post">
+                    <img src="../image/perfil.jpg" alt="Vinicius" class="foto-post">
                     <span>Vinicius - 2 horas atrás</span>
                 </div>
                 <p>Texto do corpo do post. Como é um aplicativo social, às vezes é uma opinião, outras vezes uma pergunta.</p>
@@ -56,7 +58,7 @@
 
             <div class="post">
                 <div class="cabecalho-post">
-                    <img src="./image/perfil.jpg" alt="Vinicius" class="foto-post">
+                    <img src="../image/perfil.jpg" alt="Vinicius" class="foto-post">
                     <span>Vinicius - 3 horas atrás</span>
                 </div>
                 <p>Texto do corpo do post. Às vezes é uma observação, às vezes busca recomendações.</p>
@@ -65,10 +67,10 @@
 
             <div class="post">
                 <div class="cabecalho-post">
-                    <img src="./image/perfil.jpg" alt="Mark Rojas" class="foto-post">
+                    <img src="../image/perfil.jpg" alt="Mark Rojas" class="foto-post">
                     <span>Vinicius - 6 horas atrás</span>
                 </div>
-                <img src="./image/foto-postagem.jpg" alt="Imagem de casa" class="imagem-post">
+                <img src="../image/foto-postagem.jpg" alt="Imagem de casa" class="imagem-post">
                 
             </div>
         </div>
@@ -78,13 +80,13 @@
 
 <div class="footer-header">
 
-    <img src="../../Parte Vinicius/ProjetoTCC/src/css/img/landing-page/ENCONTRE-tentativa-removebg.png" alt="" class="logo-empresa-final">
+    <img src="../../../../Parte Vinicius/ProjetoTCC/src/css/img/landing-page/ENCONTRE-tentativa-removebg.png" alt="" class="logo-empresa-final">
 
     <div class="social-media-footer">
-        <a href="" class="social-media-itens-1"><img src="./icon/Icon.svg" alt="facebook"></a>
-        <a href="" class="social-media-itens-2"><img src="./icon/Icon-1.svg" alt="linkedin"></a>
-        <a href="" class="social-media-itens-3"><img src="./icon/Icon-2.svg" alt="youtube"></a>
-        <a href="" class="social-media-itens-4"><img src="./icon/Icon-3.svg" alt="instagram"></a>
+        <a href="" class="social-media-itens-1"><img src="../icon/Icon.svg" alt="facebook"></a>
+        <a href="" class="social-media-itens-2"><img src="../icon/Icon-1.svg" alt="linkedin"></a>
+        <a href="" class="social-media-itens-3"><img src="../icon/Icon-2.svg" alt="youtube"></a>
+        <a href="" class="social-media-itens-4"><img src="../icon/Icon-3.svg" alt="instagram"></a>
     </div>
 </div>
 

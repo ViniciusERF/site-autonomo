@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de Login</title>
-    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
     <div class="container-formulario">
@@ -18,7 +18,7 @@
             <button type="submit" class="botao-formulario">Entrar</button>
         </form>
         <p class="rotulo-cadastro">
-            Não tem uma conta? <span class="link-cadastro" onclick="window.location.href='escolha.php'">Cadastre-se</span>
+            Não tem uma conta? <span class="link-cadastro" onclick="window.location.href='../escolha.php'">Cadastre-se</span>
         </p>
         <div class="container-botoes">
             <div class="botao-login-google">
@@ -46,7 +46,7 @@ if (isset($_POST["email"]) && isset($_POST["senha"])) {
     $senha = $_POST["senha"];
 
     // Conecte-se ao banco de dados
-    include_once("../Projeto/conecta.php");
+    include_once("../conecta.php");
 
     // Prepare as consultas SQL para verificar o contratante ou autônomo
     $sql_contratante = "SELECT * FROM contratante WHERE email=?";
@@ -65,7 +65,7 @@ if (isset($_POST["email"]) && isset($_POST["senha"])) {
             if (password_verify($senha, $row['senha'])) {
                 $_SESSION['user_id'] = $row['id_contratante']; // Armazena o ID do contratante
                 $_SESSION['user_type'] = 'contratante'; // Armazena o tipo de usuário
-                header("Location: ../../Parte Vinicius/ProjetoTCC/src/landing-page.php");
+                header("Location: ../../../../Parte Vinicius/ProjetoTCC/src/landing-page.php");
                 exit();
             } else {
                 echo "Senha incorreta para contratante.";
@@ -84,7 +84,7 @@ if (isset($_POST["email"]) && isset($_POST["senha"])) {
                     if (password_verify($senha, $row['senha'])) {
                         $_SESSION['user_id'] = $row['id_autonomo']; // Armazena o ID do autônomo
                         $_SESSION['user_type'] = 'autonomo'; // Armazena o tipo de usuário
-                        header("Location: perfil_autonomo.php"); // Altere para a página correta do autônomo
+                        header("Location: ../protected/perfil_autonomo.php"); // Altere para a página correta do autônomo
                         exit();
                     } else {
                         echo "Senha incorreta para autônomo.";
