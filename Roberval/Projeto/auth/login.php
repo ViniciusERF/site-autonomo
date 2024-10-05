@@ -12,6 +12,64 @@
         <form class="formulario" action="login.php" method="POST">
             <input type="email" name="email" class="entrada" placeholder="Email" required>
             <input type="password" name="senha" class="entrada" placeholder="Senha" required>
+            <?php
+            session_start(); // Inicie a sessão
+            
+            if (isset($_POST["email"]) && isset($_POST["senha"])) {
+                $email = $_POST["email"];
+                $senha = $_POST["senha"];
+            
+                // Conecte-se ao banco de dados
+                include_once("../conecta.php");
+            
+                // Prepare as consultas SQL para verificar o contratante ou autônomo
+                $sql_contratante = "SELECT * FROM contratante WHERE email=?";
+                $sql_autonomo = "SELECT * FROM autonomo WHERE email=?";
+            
+                // Usa prepared statements para maior segurança contra SQL injection
+                if ($stmt = $conn->prepare($sql_contratante)) {
+                    $stmt->bind_param("s", $email);
+                    $stmt->execute();
+                    $result_contratante = $stmt->get_result();
+            
+                    if ($result_contratante->num_rows > 0) {
+                        $row = $result_contratante->fetch_assoc();
+            
+                        // Verifique a senha
+                        if (password_verify($senha, $row['senha'])) {
+                            $_SESSION['user_id'] = $row['user_id']; // Armazena o ID do contratante
+                            $_SESSION['user_type'] = 'contratante'; // Armazena o tipo de usuário
+                            header("Location: ../../../../Parte Vinicius/ProjetoTCC/src/landing-page.php");
+                            exit();
+                        } else {
+                            echo "Senha incorreta.";
+                        }
+                    } else {
+                        if ($stmt = $conn->prepare($sql_autonomo)) {
+                            $stmt->bind_param("s", $email);
+                            $stmt->execute();
+                            $result_autonomo = $stmt->get_result();
+            
+                            if ($result_autonomo->num_rows > 0) {
+                                $row = $result_autonomo->fetch_assoc();
+            
+                                // Verifique a senha
+                                if (password_verify($senha, $row['senha'])) {
+                                    $_SESSION['user_id'] = $row['id_autonomo']; // Armazena o ID do autônomo
+                                    $_SESSION['user_type'] = 'autonomo'; // Armazena o tipo de usuário
+                                    header("Location: ../protected/perfil_autonomo.php"); // Altere para a página correta do autônomo
+                                    exit();
+                                } else {
+                                    echo "Senha incorreta.";
+                                }
+                            } else {
+                                echo "Email não encontrado.";
+                            }
+                        }
+                    }
+                }
+            }
+            ?>
             <p class="link-pagina">
                 <span class="texto-link-pagina">Esqueceu a senha?</span>
             </p>
@@ -38,65 +96,6 @@
         </div>
     </div>
 
-    <?php
-session_start(); // Inicie a sessão
-
-if (isset($_POST["email"]) && isset($_POST["senha"])) {
-    $email = $_POST["email"];
-    $senha = $_POST["senha"];
-
-    // Conecte-se ao banco de dados
-    include_once("../conecta.php");
-
-    // Prepare as consultas SQL para verificar o contratante ou autônomo
-    $sql_contratante = "SELECT * FROM contratante WHERE email=?";
-    $sql_autonomo = "SELECT * FROM autonomo WHERE email=?";
-
-    // Usa prepared statements para maior segurança contra SQL injection
-    if ($stmt = $conn->prepare($sql_contratante)) {
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $result_contratante = $stmt->get_result();
-
-        if ($result_contratante->num_rows > 0) {
-            $row = $result_contratante->fetch_assoc();
-
-            // Verifique a senha
-            if (password_verify($senha, $row['senha'])) {
-                $_SESSION['user_id'] = $row['id_contratante']; // Armazena o ID do contratante
-                $_SESSION['user_type'] = 'contratante'; // Armazena o tipo de usuário
-                header("Location: ../../../../Parte Vinicius/ProjetoTCC/src/landing-page.php");
-                exit();
-            } else {
-                echo "Senha incorreta para contratante.";
-            }
-        } else {
-            // Verifica na tabela de autônomo
-            if ($stmt = $conn->prepare($sql_autonomo)) {
-                $stmt->bind_param("s", $email);
-                $stmt->execute();
-                $result_autonomo = $stmt->get_result();
-
-                if ($result_autonomo->num_rows > 0) {
-                    $row = $result_autonomo->fetch_assoc();
-
-                    // Verifique a senha
-                    if (password_verify($senha, $row['senha'])) {
-                        $_SESSION['user_id'] = $row['id_autonomo']; // Armazena o ID do autônomo
-                        $_SESSION['user_type'] = 'autonomo'; // Armazena o tipo de usuário
-                        header("Location: ../protected/perfil_autonomo.php"); // Altere para a página correta do autônomo
-                        exit();
-                    } else {
-                        echo "Senha incorreta para autônomo.";
-                    }
-                } else {
-                    echo "Email não encontrado.";
-                }
-            }
-        }
-    }
-}
-?>
 
 
 </body>

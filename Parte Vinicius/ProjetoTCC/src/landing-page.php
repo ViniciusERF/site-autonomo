@@ -1,3 +1,9 @@
+<?php
+session_start(); // Inicia a sessão
+
+// Verifica se o usuário está logado
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -30,13 +36,20 @@
                     </div>
                 </div>-->
 
-                <div class="d-flex col-10 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6" id="header-links">
+                <div class="d-flex gap-3 me-5 col-10 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6" id="header-links">
                     <a href="#area-servico">Serviços</a>
                     <a href="#area-feedback">Avaliações</a>
                     <a href="pagina-contrate.php" id="hire-button">Contrate</a>
-                    <a href="../../../../site-autonomo/Roberval\\Projeto/auth/login.php" id="hire-button" class="botaoLogin">Entrar</a>
-                    <a href="../../../../site-autonomo/Roberval\\Projeto/protected/suporte.php" id="hire-button" class="botaoLogin">Suporte</a>
-
+                    <a href="../../../../site-autonomo/Roberval\\Projeto/auth/login.php" id="loginButton">Entrar</a>
+                    <div class="user-dropdown">
+                        <i id="userIcon" style="display: none;" class="fa-regular fa-circle-user"></i>
+                        <div class="dropdownContent row" id="dropdownMenu" style="display: none;">
+                            <a href="../../../../../site-autonomo/Roberval/Projeto/protected/perfil_autonomo.php" target="about_blank" id="perfilUser">Ver Perfil</a>
+                            <a href="../../../../../site-autonomo/Roberval/Projeto/protected/editar_perfil.php" target="about_blank" id="edicaoUser">Editar Perfil</a>
+                            <a href="../../../../../site-autonomo/Roberval/Projeto/protected/suporte.php" target="about_blank" id="suporteUser">Suporte</a>
+                            <a id="logoutUser" href="logout2.php">Logout</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -246,6 +259,52 @@
 
 
 
-    <script src="landing-page.js"></script>
+    <script>
+        var isLoggedIn = <?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>;
+        console.log(isLoggedIn)
+
+        var loginButton = document.getElementById("loginButton");
+        var userIcon = document.getElementById("userIcon");
+
+        if (isLoggedIn == 1) {
+            // Se o usuário estiver logado, esconda o botão de login e mostre o ícone do usuário
+            loginButton.style.display = "none"; // Esconde o botão de login
+            userIcon.style.display = "block";    // Mostra o ícone do usuário
+            logoutUser.style.display = "block";
+            perfilUser.style.display = "block";
+            edicaoUser.style.display = "block";
+            suporteUser.style.display = "block";
+            console.log('Usuário está logado!');
+        }else {
+            // Se o usuário não estiver logado, mostre o botão de login e esconda o ícone do usuário
+            loginButton.style.display = "block";  // Mostra o botão de login
+            userIcon.style.display = "none";
+            logoutUser.style.display = "none";
+            perfilUser.style.display = "none";
+            edicaoUser.style.display = "none";
+            dropdownContent.style.display = "none";
+            console.log('Usuário não está logado!');      // Esconde o ícone do usuário
+        }
+        
+
+        //Dropdown Usuário 
+        document.getElementById('userIcon').addEventListener('click', function() {
+            var dropdown = document.getElementById('dropdownMenu');
+            dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+        });
+
+        // Fecha o dropdown se o usuário clicar fora dele
+        window.onclick = function(event) {
+            if (!event.target.matches('#userIcon')) {
+                var dropdowns = document.getElementsByClassName('dropdownContent');
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.style.display === 'block') {
+                        openDropdown.style.display = 'none';
+                    }
+                }
+            }
+        }
+    </script>
 </body>
 </html> 

@@ -18,7 +18,7 @@
 
 <header>
         <div class="header-content">
-            <a href="../../../Parte Vinicius/ProjetoTCC/src/landing-page.php"><img src="../../../Parte Vinicius/ProjetoTCC/src/css/img/landing-page/ENCONTRE-tentativa-removebg.png" alt="" class="logo-empresa-inicial"></a>
+            <a href="../../Parte Vinicius/ProjetoTCC/src/landing-page.php"><img src="../../Parte Vinicius/ProjetoTCC/src/css/img/landing-page/ENCONTRE-tentativa-removebg.png" alt="" class="logo-empresa-inicial"></a>
         </div>
     </header>
 

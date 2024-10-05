@@ -1,41 +1,35 @@
 <?php
-
 if (!function_exists('protect')) {
 
     function protect() {
-        // Inclui o arquivo de conexão
-        include('../../../Roberval/Projeto/conecta.php');
-
-        // Verifica se a conexão foi estabelecida corretamente
-        if (!isset($conn)) {
-            die("Erro ao conectar com o banco de dados.");
+        // Inicia a sessão no início, caso ainda não tenha sido iniciada
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
         }
 
-        // Faz a consulta no banco de dados
-        $sql_code = 'SELECT * FROM contratante';
-        $sql_query = $conn->query($sql_code);
+        // Verifica se o usuário já está logado
+        if (!isset($_SESSION['user_id']) || !is_numeric($_SESSION['user_id'])) {
+            // Inclui o arquivo de conexão
+            include('../../../Roberval/Projeto/conecta.php');
 
-        // Verifica se a consulta foi bem-sucedida
-        if (!$sql_query) {
-            die("Erro na consulta SQL: " . $conn->error);
-        }
-
-        $quantidade = $sql_query->num_rows;
-
-        if ($quantidade == 1) {
-            $usuario = $sql_query->fetch_assoc();
-
-            // Inicia a sessão se ainda não estiver ativa
-            if (!isset($_SESSION)) {
-                session_start();
+            // Verifica se a conexão foi estabelecida corretamente
+            if (!isset($conn)) {
+                die("Erro ao conectar com o banco de dados.");
             }
 
-            // Define o ID do usuário na sessão
-            $_SESSION['user_id'] = $usuario['user_id'];
-        } else {
-            // Verifica se o usuário está logado
-            if (!isset($_SESSION['user_id']) || !is_numeric($_SESSION['user_id'])) {
-                // Redireciona para a página de login
+            // Realiza a consulta ao banco de dados (verifique o que deseja consultar)
+            $sql_code = 'SELECT * FROM contratante WHERE user_id = ?'; // Exemplo para consulta específica
+            $stmt = $conn->prepare($sql_code);
+            $stmt->bind_param('i', $_SESSION['user_id']); // Vincula o ID da sessão na consulta
+            $stmt->execute();
+            $sql_query = $stmt->get_result();
+
+            // Verifica se a consulta encontrou o usuário
+            if ($sql_query->num_rows === 1) {
+                $usuario = $sql_query->fetch_assoc();
+                $_SESSION['user_id'] = $usuario['user_id']; // Atualiza a sessão com o ID do usuário
+            } else {
+                // Redireciona para a página de login se o usuário não estiver logado
                 header('Location: ../../../Roberval/Projeto/auth/login.php');
                 exit();
             }

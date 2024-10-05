@@ -13,7 +13,7 @@ protect();
 <body>
     <header>
         <div class="header-content">
-            <a href="../../../../Parte Vinicius/ProjetoTCC/src/landing-page.php"><img src="../../../../Parte Vinicius/ProjetoTCC/src/css/img/landing-page/ENCONTRE-tentativa-removebg.png" alt="" class="logo-empresa-inicial"></a>     
+            <a href="../../../Parte Vinicius/ProjetoTCC/src/landing-page.php"><img src="../../../Parte Vinicius/ProjetoTCC/src/css/img/landing-page/ENCONTRE-tentativa-removebg.png" alt="" class="logo-empresa-inicial"></a>     
         </div>
     </header>
     <main>
@@ -85,7 +85,7 @@ protect();
 
 <div class="footer-header">
 
-    <img src="../../../../Parte Vinicius/ProjetoTCC/src/css/img/landing-page/ENCONTRE-tentativa-removebg.png" alt="" class="logo-empresa-final">
+    <img src="../../../Parte Vinicius/ProjetoTCC/src/css/img/landing-page/ENCONTRE-tentativa-removebg.png" alt="" class="logo-empresa-final">
 
     <div class="social-media-footer">
         <a href="" class="social-media-itens-1"><img src="../icon/Icon.svg" alt="facebook"></a>
