@@ -17,67 +17,159 @@ protect();
         </div>
     </header>
     <main>
+        <?php 
+            include_once('../conecta.php'); // Certifique-se de que isso está no início do arquivo
+            // Supondo que você tenha um ID de usuário em sessão
+            $userId = $_SESSION['user_id']; // Ou o que você estiver usando para identificar o usuário
+            
+            if(isset($userId)){
+                $sql = "SELECT nome, telefone, dataN, cep, estado, cidade, cnpj, email, descricao, imagem, area FROM autonomo WHERE user_id = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("i", $userId);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                
+                if ($result->num_rows > 0) {
+                    $userData = $result->fetch_assoc();
+                } else {
+                    echo "Usuário não encontrado.";
+                }
+            }
+        ?>
         <section class="editar-perfil">
-            <h2>Editar perfil</h2>
             <div class="perfil-container">
-                <div class="perfil-header">
-                    <img src="../image/perfil.jpg" alt="Foto de perfil">
-                    <div>
-                        <h3>Vinicius</h3>
-                        <a href="#">alterar foto de perfil</a>
+                <form  method="POST" action="editar_perfil.php" enctype="multipart/form-data">
+                    <h2>Editar perfil</h2>
+                    <div class="perfil-header">
+                        <img src="../uploads/<?php echo htmlspecialchars($userData['imagem']); ?>" alt="Foto de perfil">
+                        <div>
+                            <h3><?php echo htmlspecialchars($userData['nome']); ?></h3>
+                            <input type="file" id="imagem" name="imagem" required>
+                            <label for="imagem">Alterar foto de perfil</label>
+                        </div>
                     </div>
-                </div>
-                <form>
                     <div class="form-group">
                         <label for="username">Nome completo</label>
-                        <input type="text" id="username" value="" placeholder="Digite seu nome completo">
+                        <input type="text" id="username" name="nome" value="<?php echo htmlspecialchars($userData['nome']); ?>" placeholder="Digite seu nome completo" readonly>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="contato">Contato</label>
-                        <input type="number" id="contato" value="" placeholder="Digite seu celular">
+                        <input type="number" id="contato" name="telefone" value="<?php echo htmlspecialchars($userData['telefone']); ?>" placeholder="Digite seu celular" readonly>
                     </div>
 
                     <div class="form-group">
                         <label for="data">Data de nascimento</label>
-                        <input type="text" id="data" value="" placeholder="05/12/1997 ">
+                        <input type="text" id="data" name="dataN" value="<?php echo htmlspecialchars($userData['dataN']); ?>" placeholder="05/12/1997" readonly>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
                             <label for="cep">CEP</label>
-                            <input type="text" id="cep" value=""placeholder="19802-192">
+                            <input type="text" id="cep" name="cep" value="<?php echo htmlspecialchars($userData['cep']); ?>" placeholder="19806271" readonly>
                         </div>
                         <div class="form-group">
                             <label for="estado">Estado</label>
-                            <input type="text" id="estado" value=""placeholder="Digite o estado em que reside">
+                            <input type="text" id="estado" name="estado" value="<?php echo htmlspecialchars($userData['estado']); ?>" placeholder="Digite o estado em que reside" readonly>
                         </div>
                         <div class="form-group">
                             <label for="cidade">Cidade</label>
-                            <input type="text" id="cidade" value=""placeholder="Assis">
+                            <input type="text" id="cidade" name="cidade" value="<?php echo htmlspecialchars($userData['cidade']); ?>" placeholder="Assis" readonly>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="cnpj">CNPJ</label>
-                        <input type="text" id="cnpj" value=""placeholder="Digite seu CNPJ">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" value="" placeholder="Digite seu email">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="area">Areá de atuação</label>
-                        <input type="text" id="area" value="" placeholder="**************">
+                        <input type="text" id="cnpj" name="cnpj" value="<?php echo htmlspecialchars($userData['cnpj']); ?>" placeholder="Digite seu CNPJ" readonly>
                     </div>
 
                     <div class="form-group">
                         <label for="descricao">Descrição Profissional</label>
-                        <textarea id="descricao" rows="4" placeholder="Fala sobre suas experiências profissionais"></textarea>
+                        <input id="descricao" name="descricao" rows="4"  value="<?php echo htmlspecialchars($userData['descricao']); ?>" placeholder="Fala sobre suas experiências profissionais" readonly></input>
                     </div>
-                    <button type="submit">Salvar Alterações</button>
+
+                    <div class="form-group">
+                        <label for="area">Areá de atuação</label>
+                        <input type="text" id="area" name="area" value="<?php echo htmlspecialchars($userData['area']); ?>"  placeholder="Área do trabalho" readonly>
+                    </div>
+
+                    <button type="button" id="editButton">Editar</button>
+                    <button type="submit" id="submitButton" style="display:none;">Salvar Alterações</button>
+
+                    <!-- Botão para editar alterações -->
+                
+                <?php 
+                    include_once('../conecta.php'); // Inclua sua conexão com o banco de dados
+                    
+                    $userId = $_SESSION['user_id']; // ID do usuário logado
+                    
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                        // Obtenha os dados do formulário
+                        $nome = $_POST['nome'];
+                        $telefone = $_POST['telefone'];
+                        $dataN = $_POST['dataN'];
+                        $cep = $_POST['cep'];
+                        $estado = $_POST['estado'];
+                        $cidade = $_POST['cidade'];
+                        $cnpj = $_POST['cnpj'];
+                        $descricao = $_POST['descricao'];
+                        
+                        if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
+                            // Caminho temporário do arquivo no servidor
+                            $imagemTemp = $_FILES['imagem']['tmp_name'];
+                            
+                            // Nome original do arquivo
+                            $imagemNomeOriginal = $_FILES['imagem']['name'];
+                            
+                            // Gera um identificador único
+                            $imagemNomeUnico = uniqid(rand(), true) . '_' . $imagemNomeOriginal;
+                            
+                            // Caminho de destino
+                            $destino = '../uploads/' . $imagemNomeUnico;
+                        
+                            // Mover o arquivo para o destino final
+                            if (move_uploaded_file($imagemTemp, $destino)) {
+                                //Echo que estava usando para Debugger
+                                echo "";
+                                // Salve apenas o nome do arquivo único no banco de dados
+                                $imagem = $imagemNomeUnico; // Variável a ser usada no SQL para salvar no banco
+                            } else {
+                                //Echo para Debugger
+                                echo "";
+                            }
+                        } else {
+                            echo "Nenhuma imagem foi enviada ou ocorreu um erro no upload.";
+                        }
+                        
+                        $area = $_POST['area'];
+                        // Continue com os outros campos...
+                        
+                        // Prepare e execute a atualização no banco de dados
+                        $sql = "UPDATE autonomo SET nome = ?, telefone = ?, dataN = ?, cep = ?, estado = ?, cidade = ?, cnpj = ?, descricao = ?, imagem = ?, area = ? WHERE user_id = ?";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bind_param('ssssssssssi', $nome, $telefone, $dataN, $cep, $estado, $cidade, $cnpj, $descricao, $imagem, $area, $userId);
+
+                        
+                        if ($stmt->execute()) {
+                            echo "Dados atualizados com sucesso!";
+                            exit(header("Location: ../../../Parte Vinicius/ProjetoTCC/src/landing-page.php")); // Redirecione para o perfil ou outra página
+                        } else {
+                            echo "Erro ao atualizar dados: " . $conn->error;
+                        }
+                    }
+                    ?>
+
                 </form>
+                    <script>
+                        document.getElementById('editButton').addEventListener('click', function() {
+                            const inputs = document.querySelectorAll('input');
+                            inputs.forEach(input => {
+                                input.removeAttribute('readonly');
+                            });
+                            
+                            // Exibe o botão de enviar após ativar os campos para edição
+                            document.getElementById('submitButton').style.display = 'inline';
+                        });
+                    </script>
             </div>
         </section>
     </main>

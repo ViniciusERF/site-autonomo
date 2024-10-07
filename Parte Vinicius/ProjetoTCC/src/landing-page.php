@@ -258,7 +258,7 @@ session_start(); // Inicia a sessão
 
 
 
-
+    <!-- Script verificando usuário logado. Logado tem ícone de usuário. Não logado tem botão de entrar! -->
     <script>
         var isLoggedIn = <?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>;
         console.log(isLoggedIn)

@@ -39,7 +39,7 @@
                         if (password_verify($senha, $row['senha'])) {
                             $_SESSION['user_id'] = $row['user_id']; // Armazena o ID do contratante
                             $_SESSION['user_type'] = 'contratante'; // Armazena o tipo de usuário
-                            header("Location: ../../../../Parte Vinicius/ProjetoTCC/src/landing-page.php");
+                            header("Location: ../../../Parte Vinicius/ProjetoTCC/src/landing-page.php");
                             exit();
                         } else {
                             echo "Senha incorreta.";
@@ -55,9 +55,9 @@
             
                                 // Verifique a senha
                                 if (password_verify($senha, $row['senha'])) {
-                                    $_SESSION['user_id'] = $row['id_autonomo']; // Armazena o ID do autônomo
+                                    $_SESSION['user_id'] = $row['user_id']; // Armazena o ID do autônomo
                                     $_SESSION['user_type'] = 'autonomo'; // Armazena o tipo de usuário
-                                    header("Location: ../protected/perfil_autonomo.php"); // Altere para a página correta do autônomo
+                                    header("Location: ../../../Parte Vinicius/ProjetoTCC/src/landing-page.php"); // Altere para a página correta do autônomo
                                     exit();
                                 } else {
                                     echo "Senha incorreta.";
