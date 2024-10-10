@@ -36,7 +36,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="tel">Telefone</label>
+                        <label for="telefone">Telefone</label>
                         <input type="text" name="tel" placeholder="Digite seu número de contato">
                     </div>
 
@@ -87,7 +87,7 @@
         <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST["nome"] ?? null;
-    $tel = $_POST["tel"] ?? null;
+    $telefone = $_POST["telefone"] ?? null;
     $dataN = $_POST["dataN"] ?? null;
     $cep = $_POST["cep"] ?? null;
     $estado = $_POST["estado"] ?? null;
@@ -99,11 +99,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
     // Verifica se todos os campos foram preenchidos
-    if ($nome && $tel && $dataN && $cep && $estado && $cidade && $email && $senha) {
+    if ($nome && $telefone && $dataN && $cep && $estado && $cidade && $email && $senha) {
         include_once("conecta.php");
         
         // Prepara a consulta SQL
-        $sql = "INSERT INTO contratante (nome, tel, dataN, cep, estado, cidade, email, senha) 
+        $sql = "INSERT INTO contratante (nome, telefone, dataN, cep, estado, cidade, email, senha) 
                 VALUES ('$nome', '$tel', '$dataN', '$cep', '$estado', '$cidade', '$email', '$senhaHash')";
 
         // Executa a consulta

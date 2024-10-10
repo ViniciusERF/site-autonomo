@@ -62,7 +62,7 @@ protect();
                     </div>
     
                     <div class="box-autonomo-text">
-                        <h4>Designer</h4>
+                        <h4>Designer Sombrancelha</h4>
                         <p>Minha especialização é para você que procura alguém para desenvolver suas idéias e materializar seus sonhos!</p>
                     </div>
                 </div>

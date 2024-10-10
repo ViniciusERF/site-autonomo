@@ -23,7 +23,7 @@ protect();
             $userId = $_SESSION['user_id']; // Ou o que você estiver usando para identificar o usuário
             
             if(isset($userId)){
-                $sql = "SELECT nome, telefone, dataN, cep, estado, cidade, cnpj, email, descricao, imagem, area FROM autonomo WHERE user_id = ?";
+                $sql = "SELECT imagem, nome, telefone, dataN, cep, estado, cidade, cnpj, email, descricao, area FROM autonomo WHERE user_id = ?";
                 $stmt = $conn->prepare($sql);
                 $stmt->bind_param("i", $userId);
                 $stmt->execute();
@@ -129,9 +129,10 @@ protect();
                             // Mover o arquivo para o destino final
                             if (move_uploaded_file($imagemTemp, $destino)) {
                                 //Echo que estava usando para Debugger
-                                echo "";
+                                 
                                 // Salve apenas o nome do arquivo único no banco de dados
-                                $imagem = $imagemNomeUnico; // Variável a ser usada no SQL para salvar no banco
+                                $imagem = $imagemNomeUnico;
+                                echo $imagem; // Variável a ser usada no SQL para salvar no banco
                             } else {
                                 //Echo para Debugger
                                 echo "";

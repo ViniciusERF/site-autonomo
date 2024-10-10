@@ -196,6 +196,73 @@ p {
     text-decoration: none;
     color: black;
 }
+/* Estilo para a seção de postagem de fotos */
+.secao-postar-foto {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.secao-postar-foto h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #014950;
+}
+
+.secao-postar-foto form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.secao-postar-foto label {
+    font-size: 1.1em;
+    color: #333;
+}
+
+.secao-postar-foto input[type="file"] {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+.secao-postar-foto textarea {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    resize: none;
+}
+
+.secao-postar-foto .botao-postar {
+    background-color: #1EA665;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+.secao-postar-foto .botao-postar:hover {
+    background-color: #014950;
+}
+
+/* Responsividade para o formulário de upload */
+@media (max-width: 768px) {
+    .secao-postar-foto {
+        margin: 20px 10px;
+    }
+
+    .secao-postar-foto form {
+        width: 100%;
+    }
+}
+
 
 /* Responsividade */
 @media (max-width: 768px) {

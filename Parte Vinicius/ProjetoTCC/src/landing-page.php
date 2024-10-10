@@ -75,7 +75,7 @@ session_start(); // Inicia a sessão
                 <div class="col-10 col-sm-6 col-lg-3 col-xl-3" id="services-box-1">
                     <div class="d-flex align-items-center">
                         <img src="../src/css/img/landing-page/designer-service.svg" alt="Imagem de serviço" class="image-service">
-                        <p class="service-title-white">SAMANTA</p>
+                        <p class="service-title-white">SAMANTA W.</p>
                     </div>
     
                     <div class="service-box-contents">

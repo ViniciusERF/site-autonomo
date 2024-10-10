@@ -19,6 +19,8 @@ protect();
     </header>
 
     <section class="perfil-secao">
+
+
         <div class="cartao-perfil">
             <img src="../image/perfil.jpg" alt="Perfil do Usuário" class="foto-perfil">
             <h2>Vinicius</h2>
@@ -34,13 +36,26 @@ protect();
                 <p>Estado: São Paulo</p>
                 <p>Cidade: Assis</p>
             </div>
+
+            <div class="secao-postar-foto">
+            <h3>Postar uma foto</h3>
+            <form action="upload_foto.php" method="post" enctype="multipart/form-data">
+                <label for="imagem">Escolha uma imagem:</label>
+                <input type="file" id="imagem" name="imagem" accept="image/*" required>
+                
+                <label for="descricao">Descrição:</label>
+                <textarea id="descricao" name="descricao" rows="3" placeholder="Digite uma descrição..." required></textarea>
+                
+                <button type="submit" class="botao-postar">Postar</button>
+            </form>
+        </div>
         </div>
 
         <div class="secao-posts">
             <div class="post">
                 <div class="cabecalho-post">
                     <img src="../image/perfil.jpg" alt="Vinicius" class="foto-post">
-                    <span>Vinicius - 3 min atrás</span>
+                    <span>Vinicius</span>
                 </div>
                 <img src="../image/foto-postagem.jpg" alt="Imagem de código" class="imagem-post">
                 <p>Descrição do post</p>
@@ -50,7 +65,7 @@ protect();
             <div class="post">
                 <div class="cabecalho-post">
                     <img src="../image/perfil.jpg" alt="Vinicius" class="foto-post">
-                    <span>Vinicius - 2 horas atrás</span>
+                    <span>Vinicius </span>
                 </div>
                 <p>Texto do corpo do post. Como é um aplicativo social, às vezes é uma opinião, outras vezes uma pergunta.</p>
                 
@@ -59,18 +74,9 @@ protect();
             <div class="post">
                 <div class="cabecalho-post">
                     <img src="../image/perfil.jpg" alt="Vinicius" class="foto-post">
-                    <span>Vinicius - 3 horas atrás</span>
+                    <span>Vinicius </span>
                 </div>
                 <p>Texto do corpo do post. Às vezes é uma observação, às vezes busca recomendações.</p>
-                
-            </div>
-
-            <div class="post">
-                <div class="cabecalho-post">
-                    <img src="../image/perfil.jpg" alt="Mark Rojas" class="foto-post">
-                    <span>Vinicius - 6 horas atrás</span>
-                </div>
-                <img src="../image/foto-postagem.jpg" alt="Imagem de casa" class="imagem-post">
                 
             </div>
         </div>
