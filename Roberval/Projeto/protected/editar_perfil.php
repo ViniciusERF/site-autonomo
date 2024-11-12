@@ -23,7 +23,7 @@ protect();
             $userId = $_SESSION['user_id']; // Ou o que você estiver usando para identificar o usuário
             
             if(isset($userId)){
-                $sql = "SELECT imagem, nome, telefone, dataN, cep, estado, cidade, cnpj, email, descricao, area FROM autonomo WHERE user_id = ?";
+                $sql = "SELECT imagem, nome, tel, dataN, descricao,area ,cep, estado, cidade, cnpj, email FROM autonomo WHERE user_id = ?";
                 $stmt = $conn->prepare($sql);
                 $stmt->bind_param("i", $userId);
                 $stmt->execute();
@@ -55,7 +55,7 @@ protect();
 
                     <div class="form-group">
                         <label for="contato">Contato</label>
-                        <input type="number" id="contato" name="telefone" value="<?php echo htmlspecialchars($userData['telefone']); ?>" placeholder="Digite seu celular" readonly>
+                        <input type="number" id="contato" name="telefone" value="<?php echo htmlspecialchars($userData['tel']); ?>" placeholder="Digite seu celular" readonly>
                     </div>
 
                     <div class="form-group">

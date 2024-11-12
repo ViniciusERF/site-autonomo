@@ -1,5 +1,4 @@
-<?php include 'auth/verifica_login.php';
-?>
+<?php include'auth/verifica_login.php';?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -19,15 +18,10 @@
 <header>
     <div class="header-content">
         <a href="../../Parte Vinicius/ProjetoTCC/src/landing-page.php"><img src="image/logo.png" alt="Logo do Site" class="logo"></a>
-        
     </div>
 </header>
-
-
     <main>
         <form action="autonomo.php" method="POST" enctype="multipart/form-data">
-
-
                 <div class="form-container">
                     <div class="form-section">
                         <h2>Cadastre-se</h2>
@@ -45,7 +39,7 @@
 
                         <div class="form-group">
                             <label for="tel">Telefone</label>
-                            <input type="text" id="tel" name="telefone" placeholder="(00)0000-0000" required>
+                            <input type="text" id="tel" name="tel" placeholder="(00)0000-0000" required>
                         </div>
 
                         <div class="form-group">
@@ -54,10 +48,19 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="cep">CEP</label>
-                            <input type="text" id="cep" name="cep" placeholder="19807-505" required>
+                            <label for="descricao">Experiências</label>
+                            <input type="text" id="descricao" name="descricao" placeholder="Pedreiro - 8 anos" required>
                         </div>
 
+                        <div class="form-group">
+                            <label for="senha">Área</label>
+                            <input type="area" id="area" name="area" placeholder="Área de atuação">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cep">Cep</label>
+                            <input type="text" id="cep" name="cep" placeholder="19807-505" required>
+                        </div>
                         <div class="form-group">
                             <label for="estado">Estado</label>
                             <input type="text" id="estado" name="estado" placeholder="SP, PR, SC, RR ...." required>
@@ -74,11 +77,6 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="descricao">Experiências</label>
-                            <input type="text" id="descricao" name="descricao" placeholder="Pedreiro - 8 anos" required>
-                        </div>
-
-                        <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" id="email" name="email" placeholder="email@janesfakedomain.net" required>
                         </div>
@@ -86,11 +84,6 @@
                         <div class="form-group">
                             <label for="senha">Senha</label>
                             <input type="password" id="senha" name="senha" placeholder="***********" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="senha">Área</label>
-                            <input type="area" id="area" name="area" placeholder="Área de atuação">
                         </div>
 
                         <input class="input-secundy" type="submit" value="Cadastrar">
@@ -108,58 +101,63 @@
                 </div>
             </div>
         </form>
-        <?php    
-            include_once('conecta.php');
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                // Verifique se a imagem foi carregada
-                if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
-                    // Caminho temporário do arquivo no servidor
-                    $imagemTemp = $_FILES['imagem']['tmp_name'];
-                    
-                    // Nome original do arquivo
-                    $imagemNomeOriginal = $_FILES['imagem']['name'];
-                    
-                    // Gera um identificador único
-                    $imagemNomeUnico = uniqid(rand(), true) . '_' . $imagemNomeOriginal;
-                    
-                    // Caminho de destino
-                    $destino = 'uploads/' . $imagemNomeUnico;
-                    
-                    // Mover o arquivo para o destino final
-                    if (move_uploaded_file($imagemTemp, $destino)) {
-                        $imagem = $imagemNomeUnico; // Variável a ser usada no SQL para salvar no banco
-                        // A imagem foi salva com sucesso, agora insira os dados no banco de dados
-                        $nome = $_POST['nome'];
-                        $tel = $_POST['telefone'];
-                        $dataN = $_POST['dataN'];
-                        $cep = $_POST['cep'];
-                        $estado = $_POST['estado'];
-                        $cidade = $_POST['cidade'];
-                        $cnpj = $_POST['cnpj'];
-                        $descricao = $_POST['descricao'];
-                        $email = $_POST['email'];
-                        $senhaHash = password_hash($_POST['senha'], PASSWORD_DEFAULT); // Hash da senha
-                        $area = $_POST['area'];
-            
-                        // Comando SQL
-                        $sql = "INSERT INTO autonomo (nome, telefone, dataN, cep, estado, cidade, cnpj, descricao, email, senha, imagem, area) 
-                                VALUES ('$nome', '$tel', '$dataN', '$cep', '$estado', '$cidade', '$cnpj', '$descricao', '$email', '$senhaHash', '$imagem', '$area')";
-            
-                        // Executar a consulta
-                        if ($conn->query($sql) === TRUE) {
-                            header("Location: ../Parte Vinicius/ProjetoTCC/src/landing-page.php");
-                            exit();
-                        } else {
-                            echo "Erro: " . $sql . "<br>" . $conn->error;
-                        }
-                    } else {
-                        echo "Erro ao salvar a imagem.";
-                    }
-                } else {
-                    echo "Nenhuma imagem selecionada ou houve um erro no upload.";
-                }
+        
+        <?php
+ob_start();  // Inicia o buffer de saída
+
+include 'auth/verifica_login.php'; // Verifique este arquivo para garantir que não haja saídas
+include_once('conecta.php');       // Verifique este arquivo também
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
+        // Caminho temporário do arquivo no servidor
+        $imagemTemp = $_FILES['imagem']['tmp_name'];
+        $imagemNomeOriginal = $_FILES['imagem']['name'];
+        $imagemNomeUnico = uniqid(rand(), true) . '_' . $imagemNomeOriginal;
+        $destino = 'uploads/' . $imagemNomeUnico;
+
+        if (move_uploaded_file($imagemTemp, $destino)) {
+            $imagem = $imagemNomeUnico;
+            $nome = $_POST['nome'] ?? '';
+            $tel = $_POST['tel'] ?? '';
+            $dataN = $_POST['dataN'] ?? '';
+            $descricao = $_POST['descricao'] ?? '';
+            $area = $_POST['area'] ?? '';
+            $cep = $_POST['cep'] ?? '';
+            $estado = $_POST['estado'] ?? '';
+            $cidade = $_POST['cidade'] ?? '';
+            $cnpj = $_POST['cnpj'] ?? '';
+            $email = $_POST['email'] ?? '';
+            $senhaHash = password_hash($_POST['senha'] ?? '', PASSWORD_DEFAULT);
+
+            // Modifiquei aqui para incluir o campo user_id
+            $sql = "INSERT INTO autonomo (imagem, nome, tel, dataN, descricao, area, cep, estado, cidade, cnpj, email, senha) 
+                    VALUES ('$imagem', '$nome', '$tel', '$dataN', '$descricao', '$area', '$cep', '$estado', '$cidade', '$cnpj', '$email', '$senhaHash')";
+
+            if ($conn->query($sql) === TRUE) {
+                $autonomo_id = $conn->insert_id; // Obtenha o ID gerado
+
+                echo "Autônomo ID gerado: " . $autonomo_id; // Debug
+                header("Location: ../site-autonomo/Roberval/Projeto/protected/perfil_autonomo.php?user_id=".$autonomo_id);
+                exit();
+                
+            } else {
+                echo "Erro ao inserir no banco: " . $conn->error;
             }
-        ?>    
+        } else {
+            echo "Erro ao salvar a imagem.";
+        }
+    } else {
+        echo "Nenhuma imagem selecionada ou houve um erro no upload.";
+    }
+}
+
+ob_end_flush();  // Envia todo o conteúdo armazenado no buffer
+?>
+
+
+
+
     </main>
 
     <footer class="footer-web">

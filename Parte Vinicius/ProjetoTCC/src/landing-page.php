@@ -1,5 +1,7 @@
 <?php
-session_start(); // Inicia a sessão
+session_start(); 
+//include_once '../conecta.php'; 
+$userId = $_SESSION['user_id']; 
 
 // Verifica se o usuário está logado
 
@@ -44,7 +46,7 @@ session_start(); // Inicia a sessão
                     <div class="user-dropdown">
                         <i id="userIcon" style="display: none;" class="fa-regular fa-circle-user"></i>
                         <div class="dropdownContent row" id="dropdownMenu" style="display: none;">
-                            <a href="../../../../../site-autonomo/Roberval/Projeto/protected/perfil_autonomo.php" target="about_blank" id="perfilUser">Ver Perfil</a>
+                            <a href="../../../../../site-autonomo/Roberval/Projeto/protected/perfil_autonomo.php?user_id=<?php echo $userId; ?>" target="about_blank" id="perfilUser">Ver Perfil</a>
                             <a href="../../../../../site-autonomo/Roberval/Projeto/protected/editar_perfil.php" target="about_blank" id="edicaoUser">Editar Perfil</a>
                             <a href="../../../../../site-autonomo/Roberval/Projeto/protected/suporte.php" target="about_blank" id="suporteUser">Suporte</a>
                             <a id="logoutUser" href="logout2.php">Logout</a>
