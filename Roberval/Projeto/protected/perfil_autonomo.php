@@ -2,11 +2,9 @@
 include '../auth/verifica_login.php'; 
 protect();
 
-if (isset($_GET['user_id'])) {
-    $autonomo_id = $_GET['user_id'];
-    //var_dump($autonomo_id); // Debug
+if (isset($_GET['user_id']) && is_numeric($_GET['user_id'])) {
+    $autonomo_id = (int)$_GET['user_id']; 
 
-    // Conecta ao banco de dados
     include_once('../conecta.php');
 
     // Consulta SQL para pegar os dados do autônomo
@@ -16,26 +14,30 @@ if (isset($_GET['user_id'])) {
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // Verifique se o autônomo existe
     if ($result->num_rows > 0) {
-        // Pegar os dados do autônomo
         $row = $result->fetch_assoc();
         $imagem = $row['imagem'];
-        $nome = $row['nome'];
-        $tel = $row['tel'];
-        $descricao = $row['descricao'];
-        $area = $row['area'];
-        $cep = $row['cep'];
-        $estado = $row['estado'];
-        $cidade = $row['cidade'];
-        $email = $row['email'];
-
+        $nome = htmlspecialchars($row['nome']);
+        $tel = htmlspecialchars($row['tel']);
+        $descricao = htmlspecialchars($row['descricao']);
+        $area = htmlspecialchars($row['area']);
+        $cep = htmlspecialchars($row['cep']);
+        $estado = htmlspecialchars($row['estado']);
+        $cidade = htmlspecialchars($row['cidade']);
+        $email = htmlspecialchars($row['email']);
     } else {
         echo "Autônomo não encontrado.";
         exit();
     }
+
+    // Consulta para pegar as fotos postadas pelo autônomo
+    $sqlFotos = "SELECT imagem, descricao FROM publicacoes WHERE autonomo_id = ?";
+    $stmtFotos = $conn->prepare($sqlFotos);
+    $stmtFotos->bind_param('i', $autonomo_id);
+    $stmtFotos->execute();
+    $resultFotos = $stmtFotos->get_result();
 } else {
-    echo "ID de autônomo não fornecido.";
+    echo "ID de autônomo inválido ou não fornecido.";
     exit();
 }
 ?>
@@ -48,22 +50,29 @@ if (isset($_GET['user_id'])) {
     <title>Perfil de Usuário</title>
     <link rel="stylesheet" href="../css/perfil-autonomo.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    
 </head>
 <body>
     <header>
         <div class="header-content">
-            <a href="../../../Parte Vinicius/ProjetoTCC/src/landing-page.php"><img src="../../../Parte Vinicius/ProjetoTCC/src/css/img/landing-page/ENCONTRE-tentativa-removebg.png" alt="" class="logo-empresa-inicial"></a>
+            <a href="../../../Parte Vinicius/ProjetoTCC/src/landing-page.php">
+                <img src="../../../Parte Vinicius/ProjetoTCC/src/css/img/landing-page/ENCONTRE-tentativa-removebg.png" alt="Logo" class="logo-empresa-inicial">
+            </a>
         </div>
     </header>
     
     <section class="perfil-secao">
+
         <div class="cartao-perfil">
-            <img src="../uploads/<?php echo $imagem; ?>" alt="Perfil do Usuário" class="foto-perfil">
+            <img src="../uploads/<?php echo htmlspecialchars($imagem); ?>" alt="Perfil do Usuário" class="foto-perfil">
             <h2><?php echo $nome; ?></h2>
             <p><?php echo $tel; ?></p>
             
             <div class="icone-configuracoes">
-                <a href="https://w.app/Xl7HAD" target="about_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://wa.me/<?php echo preg_replace('/\D/', '', $tel); ?>" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
             </div>
             <div class="descricao">
                 <h3>Descrição Profissional:</h3>
@@ -90,6 +99,24 @@ if (isset($_GET['user_id'])) {
                 </form>
             </div>
         </div>
+
+         <!-- Exibe as fotos postadas pelo autônomo -->
+         <div class="fotos-postadas">
+                <h3>Ultimas postagens</h3>
+                <?php 
+                if ($resultFotos->num_rows > 0) {
+                    while ($foto = $resultFotos->fetch_assoc()) { ?>
+                        <div class="foto-item">
+                            <img src="../uploads/<?php echo htmlspecialchars($foto['imagem']); ?>" alt="Foto postada" class="foto-postada">
+                            <p><?php echo htmlspecialchars($foto['descricao']); ?></p>
+                        </div>
+                    <?php }
+                } else {
+                    echo "<p>Nenhuma foto postada ainda.</p>";
+                }
+                ?>
+            </div>
+            
     </section>
 
     <footer class="footer-web">

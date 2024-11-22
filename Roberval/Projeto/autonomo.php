@@ -1,4 +1,6 @@
-<?php include'auth/verifica_login.php';?>
+<?php include'auth/verifica_login.php';
+
+?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">

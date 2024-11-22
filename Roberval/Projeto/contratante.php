@@ -37,7 +37,7 @@
 
                     <div class="form-group">
                         <label for="telefone">Telefone</label>
-                        <input type="text" name="tel" placeholder="Digite seu número de contato">
+                        <input type="text" name="telefone" placeholder="Digite seu número de contato">
                     </div>
 
                     <div class="form-group">
@@ -104,12 +104,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         // Prepara a consulta SQL
         $sql = "INSERT INTO contratante (nome, telefone, dataN, cep, estado, cidade, email, senha) 
-                VALUES ('$nome', '$tel', '$dataN', '$cep', '$estado', '$cidade', '$email', '$senhaHash')";
+                VALUES ('$nome', '$telefone', '$dataN', '$cep', '$estado', '$cidade', '$email', '$senhaHash')";
 
         // Executa a consulta
         if ($conn->query($sql) === TRUE) {
             // Redireciona para a página home após o cadastro bem-sucedido
-            header("Location:  ../ProjetoTCC/Parte Vinicius/ProjetoTCC/src/landing-page.php");
+            header("Location:  ../../../ProjetoTCC/Parte Vinicius/ProjetoTCC/src/landing-page.php");
             exit();
         } else {
             // Exibe um alerta de erro

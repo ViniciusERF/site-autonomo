@@ -1,52 +1,48 @@
 <?php
-// Inclui a verificação de login, se necessário
+// Inclui a verificação de login e inicia a sessão
+session_start();
 include '../auth/verifica_login.php';
 protect();
 
-// Verifica se a requisição foi feita via POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Verifica se o arquivo foi enviado sem erros
     if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] == 0) {
-        // Sanitiza a descrição
         $descricao = filter_input(INPUT_POST, 'descricao', FILTER_SANITIZE_STRING);
 
-        // Dados do arquivo de imagem
         $arquivoTmp = $_FILES['imagem']['tmp_name'];
-        $nomeArquivo = basename($_FILES['imagem']['name']);
-        $diretorioDestino = '../uploads/'; // Diretório de destino
+        $nomeArquivoOriginal = pathinfo($_FILES['imagem']['name'], PATHINFO_FILENAME);
+        $extensao = pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION);
+        $nomeArquivo = $nomeArquivoOriginal . '_' . uniqid() . '.' . $extensao; // Nome único
 
-        // Cria o diretório se ele não existir
+        $diretorioDestino = '../uploads/';
         if (!is_dir($diretorioDestino)) {
             mkdir($diretorioDestino, 0755, true);
         }
 
-        // Caminho final da imagem
         $caminhoFinal = $diretorioDestino . $nomeArquivo;
 
-        // Move o arquivo para o diretório desejado
         if (move_uploaded_file($arquivoTmp, $caminhoFinal)) {
-            // Conexão ao banco de dados
-           include_once ('../conecta.php');
+            include_once('../conecta.php');
 
-            // Pega o user_id do autônomo logado
-            $autonomo_id = $_SESSION['user_id'];
+            // Verifica se o ID do usuário está na sessão
+            if (isset($_SESSION['user_id'])) {
+                $autonomo_id = $_SESSION['user_id'];
+                $sql = "INSERT INTO publicacoes (autonomo_id, imagem, descricao) VALUES (?, ?, ?)";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param('iss', $autonomo_id, $nomeArquivo, $descricao);
 
-            // Insere os dados na tabela publicacoes
-            $sql = "INSERT INTO publicacoes (autonomo_id, imagem, descricao) VALUES (?, ?, ?)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param('iss', $autonomo_id, $caminhoFinal, $descricao);
+                if ($stmt->execute()) {
+                    echo "Postagem realizada com sucesso!";
+                    header('Location: perfil_autonomo.php?user_id=' . $autonomo_id);
+                    exit();
+                } else {
+                    echo "Erro ao salvar a postagem.";
+                }
 
-            if ($stmt->execute()) {
-                echo "Postagem realizada com sucesso!";
-                // Redireciona de volta ao perfil (ou outra página)
-                header('Location: perfil_autonomo.php');
+                $stmt->close();
+                $conn->close();
             } else {
-                echo "Erro ao salvar a postagem.";
+                echo "Erro: ID de usuário não encontrado.";
             }
-
-            // Fecha a conexão
-            $stmt->close();
-            $conn->close();
         } else {
             echo "Erro ao mover a imagem.";
         }
